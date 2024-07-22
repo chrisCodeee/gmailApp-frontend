@@ -1,0 +1,14 @@
+export { default as ErrorPage } from "./errorPage/ErrorPage";
+export { default as Home } from "./home/Home";
+export { default as Inbox } from "./inbox/Inbox";
+export { default as Promotion } from "./promotion/Promotion";
+export { default as Starred } from "./starred/Starred";
+export { default as Snoozed } from "./snoozed/Snoozed";
+export { default as Sent } from "./sent/Sent";
+export { default as Draft } from "./drafts/Drafts";
+export { default as Important } from "./important/Important";
+export { default as Chat } from "./chats/Chats";
+export { default as Scheduled } from "./scheduled/Scheduled";
+export { default as Spam } from "./spam/Spam";
+export { default as Trash } from "./trash/Trash";
+export { default as ManageLabel } from "./manageLabel/ManageLabel";

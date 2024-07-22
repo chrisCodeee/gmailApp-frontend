@@ -1,0 +1,174 @@
+:root {
+	/* --color-primary: #f8fafd; */
+	--color-primary: rgba(229, 236, 247, 0.349);
+	/* --color-text: rgb(0, 29, 53); */
+	--color-text: rgb(32, 33, 36);
+}
+
+/* div.asideWrapper::-webkit-scrollbar {
+	width: 8px;
+}
+
+div.asideWrapper::-webkit-scrollbar-thumb {
+	background-color: #888;
+	border-radius: 10px;
+} */
+/* div.messageContainer::-webkit-scrollbar {
+	width: 12px;
+}
+
+div.messageContainer::-webkit-scrollbar-thumb {
+	background-color: #888;
+}
+
+div.messageContainer::-webkit-scrollbar-track-piece {
+	background-color: #cccccc54;
+} */
+
+/* ::-webkit-scrollbar-button {
+	background-color: #888;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background-color: #ccc;
+	border-radius: 10px;
+} */
+
+* {
+	box-sizing: border-box !important;
+	user-select: none;
+}
+
+html {
+	font-size: 62.5%;
+	color: rgb(132, 190, 167);
+}
+
+body {
+	font-size: 1.4rem;
+	background-color: var(--color-primary);
+	height: 100vh;
+	color: var(--color-text);
+	user-select: inherit;
+}
+
+h4 {
+	font-size: inherit;
+}
+
+img {
+	display: block;
+	object-fit: cover;
+}
+
+input,
+select,
+input:focus {
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+}
+
+button {
+	background-color: transparent;
+	color: inherit;
+}
+
+button,
+button:hover,
+button:focus {
+	border: 0;
+	outline: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul,
+li {
+	list-style: none;
+	padding: 0;
+}
+
+@media screen and (max-width: 992px) {
+	html {
+		font-size: 55%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	html {
+		font-size: 50%;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	html {
+		font-size: 40%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	html {
+		font-size: 30%;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	html {
+		font-size: 25%;
+	}
+}
+
+/* Inbox Hover Icon State */
+.iconHover {
+	display: none;
+}
+
+.fake_textarea:focus {
+	outline: 0;
+}
+
+.label {
+	transition: all 0.2s;
+	transform-origin: left;
+	padding: 0 0.7rem;
+	cursor: default;
+	color: inherit;
+	left: 5px;
+}
+
+.label,
+.dob {
+	transform: scale(1.2);
+	position: absolute;
+	top: 15px;
+}
+
+.dob {
+	left: 16px;
+}
+
+.whyGenderLink {
+	border-radius: 5px;
+	padding: 0.1rem 0.5rem;
+	margin-left: -0.6rem;
+}
+
+.whyGenderLink:hover {
+	background-color: rgba(11, 87, 208, 0.065);
+}
+
+.signupinput {
+	border-radius: 3px;
+	/* font-size: 1.6rem; */
+}
+
+.labelState {
+	top: -15px;
+	transform: scale(0.9);
+	background-color: #fff;
+}
