@@ -5,6 +5,7 @@ import SignUp from "../SignUp";
 import { FormEvent } from "react";
 import { validateUsername } from "./useValidateUser";
 import ErrorMessage from "./ErrorMessage";
+import axios from "axios";
 const page3 = () => {
 	const { user, error, setError } = useAuthState();
 	const navigate = useNavigate();
@@ -22,9 +23,22 @@ const page3 = () => {
 			return setError("username", "This username isn't allowed. Try again.");
 		}
 
-		// user.username = user.username + "@gmail.com";
+		user.username = user.username + "@gmail.com";
 
-		navigate("/register/step_4");
+		axios
+			.post("http://localhost:8080/users/register", user)
+			.then((res) => {
+				if (res.status === 200) {
+					// console.log(res.data);
+					navigate("/register/step_4");
+					localStorage.setItem("user", JSON.stringify(res.data));
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				setError("username", "Username already registered");
+				user.username = "";
+			});
 	};
 
 	return (

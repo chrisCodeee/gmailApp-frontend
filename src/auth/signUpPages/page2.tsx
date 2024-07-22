@@ -21,6 +21,10 @@ const Page2 = () => {
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
+		// The Date of Birth
+		const month = months.findIndex((month) => month === user.month) + 1;
+		user.DOB = `${month}/${user.day}/${user.year}`;
+
 		const { error: DOBError } = validateDOB(user);
 		const { error: genderError } = validateGender(user.gender);
 

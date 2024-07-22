@@ -6,6 +6,7 @@ export type USerDetails = {
 	month: string;
 	day: string;
 	year: string;
+	DOB: string;
 	gender: string;
 	customGender: string;
 	referGender: string;
@@ -47,6 +48,7 @@ interface AuthProps {
 	setError: (name: string, message: string | undefined) => void;
 	clearError: (name: string) => void;
 	clearAllError: () => void;
+	clearUsers: () => void;
 
 	signinDetails: {
 		username: string;
@@ -72,6 +74,7 @@ const useAuthState = create<AuthProps>((set) => ({
 		month: "",
 		day: "",
 		year: "",
+		DOB: "",
 		gender: "",
 		customGender: "",
 		referGender: "",
@@ -100,6 +103,7 @@ const useAuthState = create<AuthProps>((set) => ({
 		month: "",
 		day: "",
 		year: "",
+		DOB: "",
 		gender: "",
 		customGender: "",
 		referGender: "",
@@ -122,7 +126,8 @@ const useAuthState = create<AuthProps>((set) => ({
 	setGetHelp: (value) => set(() => ({ getHelpState: value })),
 	setError: (name, message) => set((store) => ({ error: { ...store.error, [name]: message } })),
 	clearError: (name) => set((store) => ({ error: { ...store.error, [name]: "" } })),
-	clearAllError: () => set(() => ({ error: { firstName: "", lastName: "", month: "", day: "", year: "", gender: "", customGender: "", referGender: "", username: "", password: "", confirmPassword: "", phoneNumber: "", verificationCode: "", recoveryEmailAddress: "" } })),
+	clearAllError: () => set(() => ({ error: { firstName: "", lastName: "", month: "", day: "", year: "", DOB: "", gender: "", customGender: "", referGender: "", username: "", password: "", confirmPassword: "", phoneNumber: "", verificationCode: "", recoveryEmailAddress: "" } })),
+	clearUsers: () => set(() => ({ user: { firstName: "", lastName: "", month: "", day: "", year: "", DOB: "", gender: "", customGender: "", referGender: "", username: "", password: "", confirmPassword: "", phoneNumber: "", verificationCode: "", recoveryEmailAddress: "" } })),
 
 	setUser: (name, value) => set((store) => ({ user: { ...store.user, [name]: value } })),
 	setSigninDetails: (name, value) => set((store) => ({ signinDetails: { ...store.signinDetails, [name]: value } })),

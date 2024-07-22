@@ -16,7 +16,7 @@ const page7 = () => {
 		if (error) {
 			return setError("recoveryEmailAddress", error.details[0].message);
 		}
-		user.username = user.username + "@gmail.com";
+
 		navigate("/register/step_8");
 	};
 

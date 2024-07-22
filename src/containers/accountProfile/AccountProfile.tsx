@@ -8,6 +8,7 @@ import { BiPencil } from "react-icons/bi";
 import { AccountProfileContainer, AccountProfileWrapper, AddButton, AddIconContainer, BtnManageWrapper, BtnName, Dot, PrivacyWrapper, SignUpButton, UserButtonWrapper, UserContainer, UserInfoIcon, UserNameContainer } from "./AccountProfileStyles";
 import { useState } from "react";
 import { useNavBarState } from "../../state-management";
+import { useUser } from "../../hooks";
 
 const AccountProfile = () => {
 	const [info, setInfo] = useState(false);
@@ -15,13 +16,18 @@ const AccountProfile = () => {
 	const { setAccountProfileStateOff } = useNavBarState();
 	const navigate = useNavigate();
 
+	const { username, firstName } = useUser();
+
+	const logout = () => {
+		localStorage.clear();
+	};
 	return (
 		<>
 			<AccountProfileWrapper>
 				<AccountProfileContainer>
 					<UserNameContainer>
 						<div className="me-5">&nbsp;</div>
-						<div>nzeanoruec@gmail.com</div>
+						<div>{username}</div>
 						<div onClick={setAccountProfileStateOff}>
 							<Icon>
 								<IoClose size={24} />
@@ -38,7 +44,7 @@ const AccountProfile = () => {
 						</button>
 
 						<div className="mt-1" style={{ fontSize: "2.2rem" }}>
-							Hi, Christian!
+							Hi, {firstName}
 						</div>
 					</UserContainer>
 
@@ -58,7 +64,7 @@ const AccountProfile = () => {
 
 						<SignUpButton className="col" onClick={() => navigate("/login")}>
 							<PiSignOutBold size={23} />
-							<BtnName>Sign out</BtnName>
+							<BtnName onClick={logout}>Sign out</BtnName>
 						</SignUpButton>
 					</UserButtonWrapper>
 
