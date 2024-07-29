@@ -4,10 +4,12 @@ import { Form } from "./components";
 import { MdHelpOutline, MdLockOutline, MdScreenSearchDesktop } from "react-icons/md";
 import { TryAnotherWayWrapper } from "./AuthStyles";
 import { useAuthState } from "../state-management";
+import { useUser } from "../hooks";
 
 const TryAnotherwayLogin = () => {
 	const navigate = useNavigate();
 	const { setGetHelp } = useAuthState();
+	const { firstName } = useUser();
 
 	const passwordBtn = () => {
 		navigate("/login/confirmpassword");
@@ -19,7 +21,7 @@ const TryAnotherwayLogin = () => {
 	return (
 		<>
 			<SignUp>
-				<Form heading={`Hi ............`} handleSubmit={passwordBtn} loginState>
+				<Form heading={`Hi ${firstName}`} handleSubmit={passwordBtn} loginState>
 					<div className="mt-4" style={{ fontSize: "2.2rem" }}>
 						Choose how you want to sign in:
 					</div>

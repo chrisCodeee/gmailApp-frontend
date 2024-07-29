@@ -13,6 +13,12 @@ const PrimaryCategory = () => {
 						<MdInbox size={iconSize} />
 					</div>
 					<PrimaryHeading>Primary</PrimaryHeading>
+
+					{/* {messageCount > 0 && (
+						<div className="ms-3">
+							<Badge count={messageCount.toString()} bgColor="rgb(227, 116, 0)" />
+						</div>
+					)} */}
 				</PrimaryIconWrapper>
 			</CategoryLabelWrapper>
 		</>

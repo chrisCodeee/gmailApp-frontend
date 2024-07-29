@@ -11,4 +11,5 @@ export { default as BtnSecondary } from "./btn/BtnSecondary";
 export { default as BtnTertiary } from "./btn/BtnTertiary";
 export { default as BtnBlue } from "./btn/BtnBlue";
 export { default as User } from "./user/User";
+export { default as UserProfile } from "./user/UserProfile";
 export { default as SearchMoreOptionForm } from "./form/SearchMoreOptionForm";

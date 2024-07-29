@@ -11,14 +11,14 @@ const page8 = () => {
 	const [bgColor, setBgColor] = useState<string>();
 
 	useEffect(() => {
-		const color = ["blue", "red", "orange", "purple", "pink"];
+		const color = ["#B692C2", "#694F8E", "#254336", "#6B8A7A", "pink", "#1A4D2E", "#4F6F52"];
 		const bgRandom = Math.floor(Math.random() * color.length);
 		setBgColor(color[bgRandom]);
 	}, []);
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
-
+		localStorage.setItem("bgColor", JSON.stringify(bgColor));
 		navigate("/register/step_9");
 	};
 

@@ -2,18 +2,19 @@ import { InboxMessageContainer, InboxMessageWrapper } from "../InboxStyles";
 import { InboxMessageBody, InboxSubject } from "../inboxComponents";
 import { InboxSubjectProps } from "../inboxComponents/InboxSubject";
 import { InboxMessageBodyProps } from "../inboxComponents/InboxMessageBody";
+import { InboxType } from "../../../state-management/useInboxState";
 
 export type InboxMessagePropsCombine = InboxMessageBodyProps & InboxSubjectProps;
 
 interface InboxMessageProps {
-	items: InboxMessagePropsCombine;
+	items: InboxMessagePropsCombine & InboxType;
 }
 
 const InboxMessages = ({ items }: InboxMessageProps) => {
 	return (
 		<InboxMessageContainer style={{ backgroundColor: items.bgColor }}>
 			<InboxMessageWrapper>
-				<InboxSubject subject={items.subject} />
+				<InboxSubject sender={items.sender} />
 				<InboxMessageBody items={items} />
 			</InboxMessageWrapper>
 		</InboxMessageContainer>

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "../../state-management";
 import { BtnNext, Form, SignUpFormInput } from "../components";
 import SignUp from "../SignUp";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { validateUsername } from "./useValidateUser";
 import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
@@ -10,10 +10,14 @@ const page3 = () => {
 	const { user, error, setError } = useAuthState();
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		user.username = user.username.split("@")[0];
+	}, []);
+
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
-		const { error } = validateUsername(user.username);
+		const { error } = validateUsername(user.username.trim());
 
 		if (error) {
 			return setError("username", error.details[0].message);
@@ -26,18 +30,15 @@ const page3 = () => {
 		user.username = user.username + "@gmail.com";
 
 		axios
-			.post("http://localhost:8080/users/register", user)
+			.post("http://localhost:8080/users/checkEmail", user)
 			.then((res) => {
 				if (res.status === 200) {
-					// console.log(res.data);
 					navigate("/register/step_4");
-					localStorage.setItem("user", JSON.stringify(res.data));
 				}
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
 				setError("username", "Username already registered");
-				user.username = "";
+				user.username = user.username.split("@")[0];
 			});
 	};
 

@@ -14,7 +14,7 @@ interface FormProps {
 	handleSubmit: (e: FormEvent) => void;
 }
 const Form = (props: FormProps) => {
-	const { clearStates } = useAuthState();
+	const { clearStates, signinDetails } = useAuthState();
 
 	const handleSubmit = (e: FormEvent) => {
 		props.handleSubmit(e);
@@ -34,9 +34,10 @@ const Form = (props: FormProps) => {
 					{props.loginState && (
 						<ProfileSwitchWrapper className="d-flex align-items-center mt-4">
 							<FaCircleUser size={20} className="me-3" />
+							{/* <User /> */}
 							<div className="d-flex">
-								<span>..............@gmail.com</span>
-								<div className="ms-1">
+								<span style={{ fontSize: "1.5rem" }}>{signinDetails.username}</span>
+								<div className="d-flex align-items-center ms-1">
 									<MdArrowDropDown size={20} />
 								</div>
 							</div>

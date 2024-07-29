@@ -221,6 +221,9 @@ interface ComposeMessageProps {
 	selectContactIndexState: number;
 	setSelectContactIndexStateOn: (index: number) => void;
 	// setSelectContactIndexStateOff: () => void;
+
+	contentEditable: string;
+	setContentEditable: (content: string) => void;
 }
 
 const useComposeMessageState = create<ComposeMessageProps>((set) => ({
@@ -326,12 +329,14 @@ const useComposeMessageState = create<ComposeMessageProps>((set) => ({
 
 	urlLinkState: false,
 	composeUrlText: [""],
+	contentEditable: "",
 	mainLinkText: "",
 	displayText: "",
 	urlText: "",
 	setDisplayText: (displayTextValue) => set(() => ({ displayText: displayTextValue })),
 	setUrlText: (urlTextValue) => set(() => ({ urlText: urlTextValue })),
 	setUrlLinkState: (state) => set(() => ({ urlLinkState: state })),
+	setContentEditable: (content) => set(() => ({ contentEditable: content })),
 	setDisplayComposeTextState: () => set((store) => ({ insertLinkState: false, composeUrlText: [...store.composeUrlText, store.mainLinkText] })),
 	setMainUrlLink: () => set((store) => ({ mainLinkText: store.urlLinkState ? store.displayText : store.urlText })),
 

@@ -5,13 +5,14 @@ import { GmailAuthGen } from "../assets";
 import { BtnPrimaryLight } from "../components";
 import { TryAnotherWayAuthWrapper } from "./AuthStyles";
 import { useEffect, useState } from "react";
-import { useCompose } from "../hooks";
+import { useCompose, useUser } from "../hooks";
 import { Alert } from "../containers";
 import { useAuthState } from "../state-management";
 
 const TryAnotherwayLoginTapPhone = () => {
 	const navigate = useNavigate();
 	const { getHelpState } = useAuthState();
+	const { firstName } = useUser();
 
 	const passwordBtn = () => {
 		navigate("/login/confirmpassword");
@@ -43,7 +44,7 @@ const TryAnotherwayLoginTapPhone = () => {
 		<>
 			{useComposeMessage.alertState && <Alert alertName="The phone number tap is not implemented. Thank you for checking my work" />}
 			<SignUp>
-				<Form heading={!getHelpState ? "Hi ............" : "Account recovery"} subHeading={getHelpState ? "To help keep your account safe, Google wants to make sure it’s really you trying to sign in" : ""} handleSubmit={passwordBtn} loginState>
+				<Form heading={!getHelpState ? `Hi ${firstName}` : "Account recovery"} subHeading={getHelpState ? "To help keep your account safe, Google wants to make sure it’s really you trying to sign in" : ""} handleSubmit={passwordBtn} loginState>
 					<div className="" style={{ position: "relative" }}>
 						<TryAnotherWayAuthWrapper></TryAnotherWayAuthWrapper>
 						<img src={GmailAuthGen} alt="gmail-ios-authgen" style={{ height: "370.362px", position: "relative" }} />

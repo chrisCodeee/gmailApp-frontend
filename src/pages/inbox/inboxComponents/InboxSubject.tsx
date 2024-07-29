@@ -5,10 +5,10 @@ import { iconSize } from "../../../components/list/useListParams";
 import { InboxSubjectWrapper } from "../InboxStyles";
 
 export interface InboxSubjectProps {
-	subject: string;
+	sender: string;
 }
 
-const InboxSubject = ({ subject }: InboxSubjectProps) => {
+const InboxSubject = ({ sender }: InboxSubjectProps) => {
 	return (
 		<>
 			<InboxSubjectWrapper>
@@ -26,7 +26,7 @@ const InboxSubject = ({ subject }: InboxSubjectProps) => {
 					</Icon>
 				</div>
 
-				<h4>{subject}</h4>
+				<h4>{sender}</h4>
 			</InboxSubjectWrapper>
 		</>
 	);

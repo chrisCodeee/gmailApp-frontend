@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import { BtnTertiary, User } from "../../components";
 import { AppsContainer, GoogleAppsWrapper } from "./GoogleAppStyles";
-import { apps, apps2 } from "./useGoogleAppsParams";
+import useGoogleAppsParams from "./useGoogleAppsParams";
 
 const GoogleApps = () => {
+	const { apps, apps2 } = useGoogleAppsParams();
 	return (
 		<GoogleAppsWrapper>
 			<div style={{ backgroundColor: " rgb(248, 250, 253)", borderTopLeftRadius: "28px", borderTopRightRadius: "28px", marginRight: "0.6rem" }}>&nbsp;</div>
 			<div className="appContainer">
 				<AppsContainer>
 					<div className="row ">
-						{apps.map((items) => (
+						{apps.map((items: any) => (
 							<Link key={items.name} to={items.link} className="col-4 mb-2" target="_blank">
-								<User height={items.height} img={items.image} borderRadius={items.name === "Account" ? "100%" : "0"} />
+								{items.icon ? items.icon : <User height={items.height} img={items.image} borderRadius="0" />}
 								<span className={items.name === "Chat" ? "mt-0" : "mt-3"} style={{ textAlign: "center" }}>
 									{items.name}
 								</span>

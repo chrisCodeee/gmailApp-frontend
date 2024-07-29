@@ -1,11 +1,10 @@
-import { Form, Icon, Logo, User } from "../../components";
+import { Form, Icon, Logo, UserProfile } from "../../components";
 import { ContainerLeft, ContainerRight, FormContainer, IconWrapper, Nav, Search } from "./NavBarStyles";
 import { IoMdMenu, IoMdHelpCircleOutline } from "react-icons/io";
 import { IoSearchSharp, IoSettingsOutline } from "react-icons/io5";
 import { LuSlidersHorizontal } from "react-icons/lu";
 import { CgMenuGridO } from "react-icons/cg";
 import { useAsideState, useComposeMessageState, useFormState, useInboxState, useNavBarState } from "../../state-management";
-import { AccountPhoto } from "../../assets";
 
 const NavBar = () => {
 	const { setShowMenuOn } = useAsideState();
@@ -127,7 +126,7 @@ const NavBar = () => {
 						setGoogleAppStateOff();
 					}}>
 					<Icon>
-						<User img={AccountPhoto} />
+						<UserProfile />
 					</Icon>
 				</div>
 			</ContainerRight>

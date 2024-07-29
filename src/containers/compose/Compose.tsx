@@ -3,11 +3,67 @@ import * as ComposeStyle from "./ComposeStyles";
 import { ComposeFormatIcon, ComposeMessageHeading } from "./component";
 import { Link } from "react-router-dom";
 import * as Container from "..";
-import { useCompose } from "../../hooks";
+import { useCompose, useUser } from "../../hooks";
 import { EditAppointment } from "../moreOptionSetUpTimeAndDate/components";
+import axios, { CanceledError } from "axios";
+import { FormEvent } from "react";
+import { useInboxState } from "../../state-management";
 
 const Compose = () => {
 	const { textAreaStyle, closeAllState, closeFormattingOption, useComposeMessage } = useCompose();
+	const { setMessage } = useInboxState();
+	const { username, firstName, lastName } = useUser();
+
+	const message = {
+		email: useComposeMessage.recipientEmailAddress,
+		subject: useComposeMessage.emailSubject,
+		body: useComposeMessage.contentEditable,
+		sender: `${firstName} ${lastName}`,
+	};
+
+	const handleInput = (event: FormEvent<HTMLDivElement>) => {
+		useComposeMessage.setContentEditable(event.currentTarget.textContent || "");
+	};
+
+	const getMessages = () => {
+		const controller = new AbortController();
+		axios
+			.get(`http://localhost:8080/getmessage/${username}`, {
+				signal: controller.signal,
+			})
+			.then((res) => {
+				if (res.status === 200) {
+					console.log(res.data);
+					setMessage(res.data);
+				}
+			})
+			.catch((err) => {
+				if (err instanceof CanceledError) return;
+				console.log(err);
+			});
+		return () => controller.abort();
+	};
+
+	const sendMessage = () => {
+		if (!message.subject && !message.body) {
+			return useComposeMessage.setScheduleSendCheckPopUpOn();
+		}
+
+		axios
+			.post(`http://localhost:8080/sendmessage/`, message)
+			.then((res) => {
+				if (res.status === 200) {
+					setTimeout(() => {
+						getMessages();
+					}, 1000);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	// console.log(messageCount);
 
 	return (
 		<>
@@ -57,35 +113,31 @@ const Compose = () => {
 
 							<div className="mt-2" onClick={useComposeMessage.setRecipientStateOff} style={{ height: useComposeMessage.maximizeState ? "443px" : "322px", position: "relative", overflowY: "hidden" }}>
 								{/* <ComposeStyle.ComposeMessageTextArea textStyle={textAreaStyle} /> */}
-								<ComposeStyle.ComposeMessageTextArea textstyle={textAreaStyle} contentEditable onClick={useComposeMessage.setComposeHeading} onPointerLeave={useComposeMessage.setComposeHeadingOff}>
+								<ComposeStyle.ComposeMessageTextArea textstyle={textAreaStyle} contentEditable onInput={handleInput} onClick={useComposeMessage.setComposeHeading} onPointerLeave={useComposeMessage.setComposeHeadingOff}>
+									{/* {useComposeMessage.contentEditable.map((text: any) => text)} */}
 									{useComposeMessage.composeUrlText.map((text) => (
+										// <ComposeStyle.ComposeUrlTextWrapper style={{ position: "absolute", top: "20px" }} textstyle={textAreaStyle} key={text}>
 										<Link to={`http://www.${useComposeMessage.urlText}`} target="_blank">
 											{text}
 										</Link>
+										// </ComposeStyle.ComposeUrlTextWrapper>
 									))}
-
-									{/* Link Hover */}
-
-									{/* {isUrlHover && (
-										<ComposeStyle.UrlTextContainer style={{ textDecoration: "none", color: "rgb(17, 85, 204)" }} contentEditable={false}>
-											<div className="pe-0" style={{ color: "rgb(32, 33, 36)", textDecoration: "inherit" }}>
-												Go to link:
-											</div>
-											<Link to={`http://www.${useComposeMessage.urlText}`} target="_blank">{`http://${useComposeMessage.urlText}`}</Link>|<span>Change</span>|<span>Remove</span>
-										</ComposeStyle.UrlTextContainer>
-									)} */}
 								</ComposeStyle.ComposeMessageTextArea>
 							</div>
 						</ComposeStyle.ComposeForm>
 
 						{/* Compose Message Footer */}
 						<ComposeStyle.ComposeMessageFooter onClick={useComposeMessage.setRecipientStateOff}>
-							<ComposeStyle.BtnSend onClick={closeFormattingOption}>
+							<ComposeStyle.BtnSend
+								onClick={() => {
+									closeFormattingOption();
+								}}>
 								<ComposeStyle.BtnName
 									title="Send (Ctrl-Enter)"
 									confidentialMode={useComposeMessage.confidentialModeTimeShow.toString()}
 									onClick={() => {
 										useComposeMessage.setScheduleSendOff();
+										sendMessage();
 									}}>
 									Send
 								</ComposeStyle.BtnName>

@@ -1,5 +1,12 @@
 import { create } from "zustand";
-
+export type InboxType = {
+	email: string;
+	_id: string;
+	subject: string;
+	body: string;
+	date: string;
+	sender: string;
+};
 interface InboxProps {
 	inboxState: boolean;
 	setInboxStateOn: () => void;
@@ -22,6 +29,9 @@ interface InboxProps {
 	selectInputToolState: boolean;
 	setSelectInputToolStateOn: () => void;
 	setSelectInputToolStateOff: () => void;
+
+	messages: InboxType[];
+	setMessage: (message: any) => void;
 }
 
 const useInboxState = create<InboxProps>((set) => ({
@@ -46,6 +56,9 @@ const useInboxState = create<InboxProps>((set) => ({
 	selectInputToolState: false,
 	setSelectInputToolStateOn: () => set((store) => ({ selectInputToolState: !store.selectInputToolState })),
 	setSelectInputToolStateOff: () => set(() => ({ selectInputToolState: false })),
+
+	messages: [],
+	setMessage: (message) => set(() => ({ messages: message })),
 }));
 
 export default useInboxState;

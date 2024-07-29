@@ -1,5 +1,6 @@
 import { Unsubscribe } from ".";
 import { useNavBarState } from "../../../state-management";
+import { InboxType } from "../../../state-management/useInboxState";
 import { InboxMessageBodyWrapper, InboxMessageBodyWrapperSubject, InboxMessageTime } from "../InboxStyles";
 
 export type InboxMessageBodyProps = {
@@ -14,65 +15,71 @@ export type InboxMessageBodyProps = {
 };
 
 interface InboxMessageBodyParams {
-	items: InboxMessageBodyProps;
+	items: InboxType & InboxMessageBodyProps;
 }
 
 const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
-	// const { inboxState } = useInboxState();
 	const { settingState } = useNavBarState();
 
-	let message;
-	if (items.heading.concat(items.message).length > 50 && items.heading.concat(items.message).length < 130) {
-		message = items.heading.concat(items.message).slice(0, 1);
-	} else if (items.heading.concat(items.message).length > 137) {
-		message = items.heading.concat(items.message).slice(0, 35);
-	} else if (items.heading.concat(items.message).length > 75 && items.heading.concat(items.message).length <= 130) {
-		message = items.heading.concat(items.message).slice(0, 64);
-	} else {
-		message = items.heading.concat(...items.message);
-	}
+	const months = ["Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-	let messageHover;
-	if (items.heading.concat(items.message).length > 50 && items.heading.concat(items.message).length < 130) {
-		messageHover = items.heading.concat(items.message).slice(0, 46);
-	} else if (items.heading.concat(items.message).length > 137) {
-		messageHover = items.heading.concat(items.message).slice(0, 10);
-	} else if (items.heading.concat(items.message).length > 75 && items.heading.concat(items.message).length <= 130) {
-		messageHover = message.slice(0, 0);
-	} else {
-		// messageHover = items.heading.concat(...items.message);
-	}
+	const date = new Date(items.date);
+	const month = date.getMonth();
+	const day = date.getDate();
+
+	const pastDate = `${months[month]} ${day}`;
+
+	let hours = new Date(items.date).getHours();
+	let minutes = new Date(items.date).getMinutes().toString().padStart(2, "0");
+	const ampm = hours >= 12 ? "PM" : "AM";
+
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	const strHours = hours.toString();
+
+	let time;
+	new Date().getDate() - day >= 1 ? (time = pastDate) : (time = `${strHours}:${minutes} ${ampm}`);
 
 	return (
 		<>
 			<InboxMessageBodyWrapper>
 				<InboxMessageBodyWrapperSubject>
-					{!items.inboxState && <h4>{items.heading} &nbsp;</h4>}
+					{!items.inboxState && !settingState && (
+						<>
+							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 90) : items.subject}</h4> : <h4>(no subject)</h4>}
+							{items.body && <span className="mx-2">-</span>}
 
-					{settingState && (
-						<h4 className="me-5" style={{ fontWeight: "400" }}>
-							{/* {items.heading.concat(...items.message).slice(0, 2)}.. */}
-							{message}...
-						</h4>
+							{<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}...` : items.subject.length < 75 ? `${items.body.slice(0, 80)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 40)}...` : items.body}</h4>}
+						</>
+					)}
+
+					{items.inboxState && !settingState && (
+						<>
+							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 85) : items.subject}</h4> : <h4>(no subject)</h4>}
+							{items.body && <span className="mx-2">-</span>}
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 80)}...` : items.subject.length < 75 ? `${items.body.slice(0, 50)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 20)}...` : items.body}</h4>
+						</>
+					)}
+					{settingState && !items.inboxState && (
+						<>
+							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 50) : items.subject}</h4> : <h4>(no subject)</h4>}
+							{items.body && <span className="mx-2">-</span>}
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 65)}...` : items.subject.length < 75 ? `${items.body.slice(0, 28)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}...` : items.body}</h4>
+						</>
 					)}
 
 					{settingState && items.inboxState && (
-						<h4 style={{ fontWeight: "400" }}>
-							{/* {items.heading.concat(...items.message).slice(0, 28)}.. */}
-							{messageHover}...
-						</h4>
+						<>
+							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 50) : items.subject}</h4> : <h4>(no subject)</h4>}
+							{items.body && <span className="mx-2">-</span>}
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 38)}...` : items.subject.length < 75 ? `${items.body.slice(0, 0)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}...` : items.body}</h4>
+						</>
 					)}
-
-					{!items.inboxState && !settingState && <h4 style={{ fontWeight: "400" }}>{items.message.length > 75 ? items.message.slice(0, 80) : items.message}...</h4>}
-
-					{items.inboxState && !settingState && <h4 style={{ fontWeight: "400" }}>{items.heading.concat(...items.message).slice(0, 97)}...</h4>}
 				</InboxMessageBodyWrapperSubject>
 
 				{items.inboxState && <Unsubscribe />}
-				{/* <div className="show">
-					<Unsubscribe />
-				</div> */}
-				{!items.inboxState && <InboxMessageTime>{items.time}</InboxMessageTime>}
+
+				{!items.inboxState && <InboxMessageTime>{time}</InboxMessageTime>}
 			</InboxMessageBodyWrapper>
 		</>
 	);

@@ -5,6 +5,7 @@ import { SignUpFormInput, BtnNext } from "./components";
 import SignUp from "./SignUp";
 import ErrorMessage from "./signUpPages/ErrorMessage";
 import { Form } from "./components";
+import axios from "axios";
 
 const ConfirmLoginPassword = () => {
 	const { signinDetails, error, setError } = useAuthState();
@@ -14,21 +15,30 @@ const ConfirmLoginPassword = () => {
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
-		const password = "1234"; //From database
 		if (!signinDetails.password) {
 			return setError("password", "Enter a password");
 		}
-		if (signinDetails.password !== password) {
-			return setError("password", "Wrong password. Try again or click Forgot password to reset it.");
-		}
 
-		navigate("/");
+		axios
+			.post("http://localhost:8080/users/checkloginpassword", signinDetails)
+			.then((res) => {
+				if (res.status === 200) {
+					// console.log(res.data);
+					localStorage.setItem("user", JSON.stringify(res.data));
+					navigate("/");
+					window.location.reload();
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				setError("password", "Wrong password. Try again or click Forgot password to reset it.");
+			});
 	};
 
 	return (
 		<>
 			<SignUp>
-				<Form heading={`Hi ............`} handleSubmit={handleSubmit} loginState>
+				<Form heading="Welcome" handleSubmit={handleSubmit} loginState>
 					<div className="">To continue, first verify it’s you</div>
 
 					<div style={{ margin: "5rem 0 0 0" }}>

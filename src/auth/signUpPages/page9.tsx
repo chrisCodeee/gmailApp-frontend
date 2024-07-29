@@ -4,26 +4,23 @@ import { BtnNext, Form } from "../components";
 import SignUp from "../SignUp";
 import { FormEvent } from "react";
 import axios from "axios";
-import _ from "lodash";
-import { useUser } from "../../hooks";
 
 const page9 = () => {
 	const { user, clearUsers } = useAuthState();
 	const navigate = useNavigate();
-	const { userId } = useUser();
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		clearUsers();
-		// const postUser = _.omit(user, ["recoveryEmailAddress"]);
 
 		axios
-			.put(`http://localhost:8080/users/register/${userId}`, user)
+			.post(`http://localhost:8080/users/register/`, user)
 			.then((res) => {
 				if (res.status === 200) {
-					// console.log(res.data);
+					console.log(res.data);
 					navigate("/");
 					localStorage.setItem("user", JSON.stringify(res.data));
+					window.location.reload();
 				}
 			})
 			.catch((err) => {

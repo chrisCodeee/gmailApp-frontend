@@ -122,7 +122,14 @@ const InsertLink = () => {
 									<BtnSecondary name="Cancel" borderRadius="20px" />
 								</div>
 
-								<InsertLinkStyle.BtnOk disabled={!useComposeMessage.urlText} $btnstate={useComposeMessage.urlText} onClick={useComposeMessage.setDisplayComposeTextState}>
+								<InsertLinkStyle.BtnOk
+									disabled={!useComposeMessage.urlText}
+									$btnstate={useComposeMessage.urlText}
+									onClick={() => {
+										useComposeMessage.setDisplayComposeTextState();
+										// useComposeMessage.setInsertLinkOff();
+										// useComposeMessage.setContentEditable(useComposeMessage.urlText);
+									}}>
 									OK
 								</InsertLinkStyle.BtnOk>
 							</InsertLinkStyle.InsertLinkButtonWrapper>

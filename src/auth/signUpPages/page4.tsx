@@ -14,14 +14,14 @@ const page4 = () => {
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
-		const { error } = validatePassword(user.password);
+		const { error } = validatePassword(user.password.trim());
 		if (error) {
 			return setError("password", error.details[0].message);
 		}
 		if (!user.confirmPassword) {
 			return setError("confirmPassword", "Confirm your password");
 		}
-		if (user.confirmPassword !== user.password) {
+		if (user.confirmPassword.trim() !== user.password.trim()) {
 			return setError("confirmPassword", "Those passwords didn't match. Try again.");
 		}
 
