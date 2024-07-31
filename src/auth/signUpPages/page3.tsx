@@ -30,7 +30,7 @@ const page3 = () => {
 		user.username = user.username + "@gmail.com";
 
 		axios
-			.post("http://localhost:8080/users/checkEmail", user)
+			.post("https://gmailapp-backend-production.up.railway.app/users/checkEmail", user)
 			.then((res) => {
 				if (res.status === 200) {
 					navigate("/register/step_4");

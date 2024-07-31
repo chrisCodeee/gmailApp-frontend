@@ -14,7 +14,7 @@ const page9 = () => {
 		clearUsers();
 
 		axios
-			.post(`http://localhost:8080/users/register/`, user)
+			.post(`https://gmailapp-backend-production.up.railway.app/users/register/`, user)
 			.then((res) => {
 				if (res.status === 200) {
 					console.log(res.data);

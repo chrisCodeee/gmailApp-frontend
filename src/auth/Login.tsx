@@ -25,7 +25,7 @@ const Login = () => {
 		console.log(signinDetails);
 
 		axios
-			.post("http://localhost:8080/users/checkloginemail", signinDetails)
+			.post("https://gmailapp-backend-production.up.railway.app/users/checkloginemail", signinDetails)
 			.then((res) => {
 				if (res.status === 200) {
 					// console.log(res.data);

@@ -27,7 +27,7 @@ function App() {
 		const controller = new AbortController();
 
 		axios
-			.get(`http://localhost:8080/getmessage/${username}`, {
+			.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {

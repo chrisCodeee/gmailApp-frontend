@@ -27,7 +27,7 @@ const MobileCompose = () => {
 	const getMessages = () => {
 		const controller = new AbortController();
 		axios
-			.get(`http://localhost:8080/getmessage/${username}`, {
+			.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
@@ -63,7 +63,7 @@ const MobileCompose = () => {
 		}, 5000);
 
 		axios
-			.post(`http://localhost:8080/sendmessage/`, message)
+			.post(`https://gmailapp-backend-production.up.railway.app/sendmessage/`, message)
 			.then((res) => {
 				if (res.status === 200) {
 					setMobileComposeState(false);
