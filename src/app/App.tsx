@@ -12,13 +12,13 @@ import axios, { CanceledError } from "axios";
 import { useEffect } from "react";
 
 function App() {
-	const { showMoreState, supportState, googleAppState, accountProfileState } = useNavBarState();
+	const { showMoreState, supportState, googleAppState, accountProfileState, mobileComposeState } = useNavBarState();
 
 	const { createLabelState, composeMessageState } = useAsideState();
 
 	const { useComposeMessage } = useCompose();
 
-	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, setMessage } = useInboxState();
+	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, setMessage } = useInboxState();
 
 	const { user, username } = useUser();
 
@@ -46,7 +46,15 @@ function App() {
 		<>
 			{user ? (
 				<AppWrapper>
-					<Container.NavBar />
+					{/* <div className="d-none d-xl-block">
+						<Container.NavBar />
+					</div>
+					<div className="d-block d-xl-none">
+						<Container.MobileNavBar />
+					</div> */}
+					<Container.MobileNavBar />
+
+					{mobileComposeState && <Container.MobileCompose />}
 					<Outlet />
 					{/* Other Components when clicked or hovered */}
 					{createLabelState && <Container.CreateLabelModal />}
@@ -70,6 +78,8 @@ function App() {
 					{useComposeMessage.moreOptionTimeAndDateState && <MoreOptionTimeAndDate />}
 					{useComposeMessage.scheduleAppointmentState && <ScheduleAppointment />}
 					{useComposeMessage.scheduleSendCheckPopUpState && <ScheduleCheckPopUp />}
+					{messageSentState && <Container.MessageSentAlert />}
+
 					{/* <Container.SelectContact /> */}
 				</AppWrapper>
 			) : (

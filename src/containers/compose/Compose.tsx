@@ -7,11 +7,13 @@ import { useCompose, useUser } from "../../hooks";
 import { EditAppointment } from "../moreOptionSetUpTimeAndDate/components";
 import axios, { CanceledError } from "axios";
 import { FormEvent } from "react";
-import { useInboxState } from "../../state-management";
+import { useAsideState, useInboxState } from "../../state-management";
+import { validateSendEmail } from "../scheduleSend/component/useScheduleSend";
 
 const Compose = () => {
 	const { textAreaStyle, closeAllState, closeFormattingOption, useComposeMessage } = useCompose();
-	const { setMessage } = useInboxState();
+	const { setComposeMessageStateOff } = useAsideState();
+	const { setMessage, setMessageSentState } = useInboxState();
 	const { username, firstName, lastName } = useUser();
 
 	const message = {
@@ -45,14 +47,30 @@ const Compose = () => {
 	};
 
 	const sendMessage = () => {
-		if (!message.subject && !message.body) {
-			return useComposeMessage.setScheduleSendCheckPopUpOn();
+		// if (!message.subject && !message.body) {
+		// 	return useComposeMessage.setScheduleSendCheckPopUpOn();
+		// }
+
+		const { error } = validateSendEmail(useComposeMessage.recipientEmailAddress);
+
+		if (useComposeMessage.recipientEmailAddress === "") {
+			return useComposeMessage.setScheduleSendPopUpOn();
 		}
+		if (error) {
+			return useComposeMessage.setScheduleCheckEmailPopUpOn();
+		}
+
+		setComposeMessageStateOff();
+
+		setTimeout(() => {
+			setMessageSentState(false);
+		}, 5000);
 
 		axios
 			.post(`http://localhost:8080/sendmessage/`, message)
 			.then((res) => {
 				if (res.status === 200) {
+					setMessageSentState(true);
 					setTimeout(() => {
 						getMessages();
 					}, 1000);

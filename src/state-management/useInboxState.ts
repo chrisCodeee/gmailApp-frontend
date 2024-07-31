@@ -32,6 +32,12 @@ interface InboxProps {
 
 	messages: InboxType[];
 	setMessage: (message: any) => void;
+
+	messageSentState: boolean;
+	setMessageSentState: (state: boolean) => void;
+
+	errorMessage: string;
+	setErrorMessage: (text: string) => void;
 }
 
 const useInboxState = create<InboxProps>((set) => ({
@@ -59,6 +65,12 @@ const useInboxState = create<InboxProps>((set) => ({
 
 	messages: [],
 	setMessage: (message) => set(() => ({ messages: message })),
+
+	messageSentState: false,
+	setMessageSentState: (state) => set(() => ({ messageSentState: state })),
+
+	errorMessage: "",
+	setErrorMessage: (text) => set(() => ({ errorMessage: text })),
 }));
 
 export default useInboxState;

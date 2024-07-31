@@ -10,7 +10,7 @@ const MainContainer = styled.main`
 `;
 
 const LeftAsideContainer = styled.aside`
-	min-width: 25rem;
+	width: 25rem;
 `;
 
 const RightAsideContainer = styled.aside`
@@ -21,6 +21,10 @@ const MessageContainer = styled.div`
 	flex-grow: 1;
 	background-color: #fff;
 	border-radius: 20px;
+
+	@media screen and (max-width: 1140px) {
+		border-radius: 0;
+	}
 `;
 
 const SettingWrapper = styled.div`

@@ -49,7 +49,7 @@ const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
 							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 90) : items.subject}</h4> : <h4>(no subject)</h4>}
 							{items.body && <span className="mx-2">-</span>}
 
-							{<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}...` : items.subject.length < 75 ? `${items.body.slice(0, 80)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 40)}...` : items.body}</h4>}
+							{<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 80)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 40)}${items.body && "..."}` : items.body}</h4>}
 						</>
 					)}
 
@@ -57,14 +57,14 @@ const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
 						<>
 							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 85) : items.subject}</h4> : <h4>(no subject)</h4>}
 							{items.body && <span className="mx-2">-</span>}
-							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 80)}...` : items.subject.length < 75 ? `${items.body.slice(0, 50)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 20)}...` : items.body}</h4>
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 80)}` : items.subject.length < 75 ? `${items.body.slice(0, 50)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 20)}${items.body && "..."}` : items.body}</h4>
 						</>
 					)}
 					{settingState && !items.inboxState && (
 						<>
 							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 50) : items.subject}</h4> : <h4>(no subject)</h4>}
 							{items.body && <span className="mx-2">-</span>}
-							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 65)}...` : items.subject.length < 75 ? `${items.body.slice(0, 28)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}...` : items.body}</h4>
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 65)}` : items.subject.length < 75 ? `${items.body.slice(0, 28)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}${items.body && "..."}` : items.body}</h4>
 						</>
 					)}
 
@@ -72,12 +72,12 @@ const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
 						<>
 							{items.subject ? <h4>{items.subject.length >= 75 ? items.subject.slice(0, 50) : items.subject}</h4> : <h4>(no subject)</h4>}
 							{items.body && <span className="mx-2">-</span>}
-							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 38)}...` : items.subject.length < 75 ? `${items.body.slice(0, 0)}...` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}...` : items.body}</h4>
+							<h4 style={{ fontWeight: "400" }}>{items.subject.length < 15 ? `${items.body.slice(0, 38)}` : items.subject.length < 75 ? `${items.body.slice(0, 0)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 0)}${items.body && "..."}` : items.body}</h4>
 						</>
 					)}
 				</InboxMessageBodyWrapperSubject>
 
-				{items.inboxState && <Unsubscribe />}
+				{items.inboxState && <Unsubscribe messageId={items._id} />}
 
 				{!items.inboxState && <InboxMessageTime>{time}</InboxMessageTime>}
 			</InboxMessageBodyWrapper>

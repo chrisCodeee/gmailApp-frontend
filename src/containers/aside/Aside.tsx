@@ -6,6 +6,7 @@ import { useAsideState, useComposeMessageState } from "../../state-management";
 
 const Aside = () => {
 	const { showMenu, setComposeMessageStateOn } = useAsideState();
+
 	const { setMaximizeStateOff } = useComposeMessageState();
 	return (
 		<>

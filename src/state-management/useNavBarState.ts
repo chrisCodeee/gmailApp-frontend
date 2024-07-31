@@ -20,6 +20,9 @@ interface NavBarProps {
 	accountProfileState: boolean;
 	setAccountProfileStateOn: () => void;
 	setAccountProfileStateOff: () => void;
+
+	mobileComposeState: boolean;
+	setMobileComposeState: (state: boolean) => void;
 }
 
 const useNavBarState = create<NavBarProps>((set) => ({
@@ -42,6 +45,9 @@ const useNavBarState = create<NavBarProps>((set) => ({
 	accountProfileState: false,
 	setAccountProfileStateOn: () => set((store) => ({ accountProfileState: !store.accountProfileState })),
 	setAccountProfileStateOff: () => set(() => ({ accountProfileState: false })),
+
+	mobileComposeState: false,
+	setMobileComposeState: (state) => set(() => ({ mobileComposeState: state })),
 }));
 
 export default useNavBarState;

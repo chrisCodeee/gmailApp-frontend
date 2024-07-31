@@ -29,6 +29,7 @@ const Home = () => {
 			}}>
 			{showMenu && (
 				<LeftAsideContainer
+					className="d-none d-xl-block"
 					onClick={() => {
 						setSelectMessageTypeStateOff();
 						setMarkAllMessageReadStateOff();
@@ -53,7 +54,7 @@ const Home = () => {
 				</div>
 			)}
 
-			<RightAsideContainer onClick={setSelectMessageTypeStateOff}>
+			<RightAsideContainer onClick={setSelectMessageTypeStateOff} className="d-none d-xl-block">
 				<RightSideBar />
 			</RightAsideContainer>
 

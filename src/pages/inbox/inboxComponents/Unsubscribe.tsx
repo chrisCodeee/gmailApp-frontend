@@ -5,27 +5,78 @@ import { TbClockHour5 } from "react-icons/tb";
 import { Icon } from "../../../components";
 import { iconSize } from "../../../components/list/useListParams";
 import { UnsubscribeText, UnsubscribeWrapper } from "../InboxStyles";
+import axios, { CanceledError } from "axios";
+import { useUser } from "../../../hooks";
+import { useInboxState } from "../../../state-management";
 
-const Unsubscribe = () => {
+interface Props {
+	messageId: string;
+}
+
+const Unsubscribe = ({ messageId }: Props) => {
+	const { setMessage, messages } = useInboxState();
+	const { username } = useUser();
+
+	const getMessages = () => {
+		const controller = new AbortController();
+		axios
+			.get(`http://localhost:8080/getmessage/${username}`, {
+				signal: controller.signal,
+			})
+			.then((res) => {
+				if (res.status === 200) {
+					console.log(res.data);
+					setMessage(res.data);
+				}
+			})
+			.catch((err) => {
+				if (err instanceof CanceledError) return;
+				console.log(err);
+			});
+		return () => controller.abort();
+	};
+
+	const deleteMessage = () => {
+		setMessage(messages.filter((item) => item._id !== messageId));
+
+		axios
+			.delete(`http://localhost:8080/deletemessage/${messageId}`)
+			.then((res) => {
+				if (res.status === 200) {
+					getMessages();
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 	return (
 		<>
 			<UnsubscribeWrapper>
 				<UnsubscribeText>Unsubscribe</UnsubscribeText>
-				<Icon>
-					<MdOutlineArchive size={iconSize} />
-				</Icon>
+				<div title="Archive">
+					<Icon>
+						<MdOutlineArchive size={iconSize} />
+					</Icon>
+				</div>
 
-				<Icon>
-					<CgTrash size={iconSize} />
-				</Icon>
+				<div onClick={() => deleteMessage()} title="Delete">
+					<Icon>
+						<CgTrash size={iconSize} />
+					</Icon>
+				</div>
 
-				<Icon>
-					<LuMailOpen size={iconSize} />
-				</Icon>
+				<div title="Mark as read">
+					<Icon>
+						<LuMailOpen size={iconSize} />
+					</Icon>
+				</div>
 
-				<Icon>
-					<TbClockHour5 size={iconSize} />
-				</Icon>
+				<div title="Snooze">
+					<Icon>
+						<TbClockHour5 size={iconSize} />
+					</Icon>
+				</div>
 			</UnsubscribeWrapper>
 		</>
 	);

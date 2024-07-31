@@ -18,7 +18,7 @@ const UpperMessage = () => {
 	const { setSelectMesssageTypeStateOn, setSelectMessageTypeStateOff, setMarkAllMessageReadStateOn, setMarkAllMessageReadStateOff, setSelectInputToolStateOn, setSelectInputToolStateOff, messages } = useInboxState();
 	return (
 		<>
-			<UpperMessageWrapper>
+			<UpperMessageWrapper className="d-none d-xl-flex">
 				<FlexWrapper>
 					<FlexWrapper>
 						<FlexWrapperCheckbox title="Select" onClick={() => setInputCheckboxState(!inputCheckboxState)}>

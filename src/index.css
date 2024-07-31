@@ -51,6 +51,7 @@ body {
 	height: 100vh;
 	color: var(--color-text);
 	user-select: inherit;
+	/* color: rgb(133, 52, 52); */
 }
 
 h4 {
@@ -91,6 +92,12 @@ ul,
 li {
 	list-style: none;
 	padding: 0;
+}
+
+@media screen and (max-width: 1140px) {
+	html {
+		font-size: 60%;
+	}
 }
 
 @media screen and (max-width: 992px) {

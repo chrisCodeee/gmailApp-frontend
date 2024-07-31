@@ -1,23 +1,22 @@
 import { useCompose } from "../../hooks";
 import { ScheduleSendWrapper } from "./ScheduleSendStyle";
 import { MdOutlineScheduleSend } from "react-icons/md";
+import { validateSendEmail } from "./component/useScheduleSend";
 
 const ScheduleSend = () => {
 	const { useComposeMessage } = useCompose();
 
-	const text = useComposeMessage.recipientEmailAddress.split("@");
-	const text2 = text[text.length - 1].split(".");
-
 	const checkEmailSubject = () => {
-		if (useComposeMessage.recipientEmailAddress) {
-			if (!useComposeMessage.recipientEmailAddress.includes("@") || !text2[0] || text2[1].length < 2) {
-				useComposeMessage.setScheduleCheckEmailPopUpOn();
-			} else {
-				useComposeMessage.setScheduleSendPopUpOn();
-			}
-		} else {
-			useComposeMessage.setScheduleSendPopUpOn();
+		const { error } = validateSendEmail(useComposeMessage.recipientEmailAddress);
+
+		if (useComposeMessage.recipientEmailAddress === "") {
+			return useComposeMessage.setScheduleSendPopUpOn();
 		}
+		if (error) {
+			return useComposeMessage.setScheduleCheckEmailPopUpOn();
+		}
+
+		useComposeMessage.setScheduleSendPopUpOn();
 	};
 	return (
 		<>

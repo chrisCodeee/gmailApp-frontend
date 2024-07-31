@@ -1,6 +1,56 @@
 import styled from "styled-components";
 
-const InboxContainer = styled.div``;
+const InboxContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+
+	& input {
+		border-radius: 3px;
+		border: 2px solid #fff;
+
+		&:focus {
+			border: 2px solid #000;
+		}
+	}
+
+	& .btn-cancel {
+		background-color: rgba(229, 236, 247, 0.349);
+		outline: 1px solid rgba(0, 0, 0, 0.1);
+		border-radius: 2px;
+		font-weight: 500;
+		font-size: 1.3rem;
+		padding: 0.3rem 1.2rem 0.5rem 1.2rem;
+		display: none;
+
+		&:hover {
+			background-color: rgba(229, 236, 247, 0.9);
+		}
+	}
+
+	& input:focus + .btn-cancel {
+		display: block;
+	}
+
+	& .nomessage {
+		& .inboxsetting {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	& .footer {
+		& .link {
+			cursor: pointer;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+`;
 
 const CategoryContainer = styled.div`
 	border-bottom: 1px solid rgba(180, 182, 187, 0.3);

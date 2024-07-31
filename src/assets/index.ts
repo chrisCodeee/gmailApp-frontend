@@ -59,3 +59,4 @@ export { default as ContactIcon } from "./contacts_32dp.png";
 export { default as NoData } from "./no_data.png";
 export { default as USAFlag } from "./usa-flag.webp";
 export { default as GmailAuthGen } from "./gmail_ios_authzen.gif";
+export { default as MobileNoMessage } from "./mobileNoMessage.png";

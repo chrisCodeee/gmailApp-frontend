@@ -1,51 +1,5 @@
 import Joi from "joi";
 
-// const useValidateUser = () => {
-// 	const navigate = useNavigate();
-// 	const { user, setError, clearError } = useAuthState();
-
-// 	const validateFirstname = () => {
-// 		if (!user.firstName) {
-// 			setError("firstName", "Enter first name");
-// 		} else if (user.firstName.length < 3) {
-// 			setError("firstName", "Are you sure you entered your name correctly?");
-// 		} else {
-// 			navigate("/register/step_2");
-// 		}
-// 	};
-
-// 	const validateDOB = () => {
-// 		const day = parseInt(user.day);
-// 		const year = parseInt(user.year);
-// 		const validate = !user.month || !user.day || !user.year || Number.isNaN(Number(user.day)) || Number.isNaN(Number(user.year)) || day <= 0 || day > 31 || year < 1000 || year > new Date().getFullYear();
-// 		if (validate && !user.gender) {
-// 			setError("month", "Please enter a valid date");
-// 			setError("gender", "Please select a gender");
-// 		} else if (user.gender && validate) {
-// 			setError("month", "Please enter a valid date");
-// 			clearError("gender");
-// 		} else if (!validate && !user.gender) {
-// 			setError("gender", "Please select a gender");
-// 			clearError("month");
-// 		} else if (!validate && !user.gender) {
-// 			setError("gender", "Please select a gender");
-// 			clearError("month");
-// 		} else {
-// 			navigate("/register/step_3");
-// 		}
-// 	};
-
-// 	// const validateGender = () => {
-// 	// 	if (!user.gender) {
-// 	// 		setError("gender", "Please select a gender");
-// 	// 	} else {
-// 	// 		navigate("/register/step_3");
-// 	// 	}
-// 	// };
-
-// 	// return { validate };
-// };
-
 function validateName(user: string) {
 	const schema = Joi.string().min(3).max(255).required().messages({
 		"string.empty": "Enter first name",
