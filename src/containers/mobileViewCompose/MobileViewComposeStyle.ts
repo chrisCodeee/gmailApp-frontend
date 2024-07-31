@@ -10,7 +10,7 @@ const MobileViewComposeWrapper = styled.div`
 	background-color: #fff;
 
 	& .header {
-		background-color: rgba(229, 236, 247, 0.349);
+		background-color: rgb(241, 241, 241);
 		padding: 1rem 0.7rem;
 		display: flex;
 		justify-content: space-between;
@@ -58,6 +58,10 @@ const MobileViewComposeWrapper = styled.div`
 			&:focus {
 				border: 2px solid #000;
 			}
+		}
+
+		& label {
+			cursor: pointer;
 		}
 	}
 

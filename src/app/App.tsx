@@ -10,9 +10,10 @@ import MoreOptionTimeAndDate from "../containers/moreOptionSetUpTimeAndDate/More
 import { ScheduleAppointment } from "../containers/moreOptionSetUpTimeAndDate/components";
 import axios, { CanceledError } from "axios";
 import { useEffect } from "react";
+import SuccessMessage from "../containers/mobileViewCompose/SuccessMessage";
 
 function App() {
-	const { showMoreState, supportState, googleAppState, accountProfileState, mobileComposeState } = useNavBarState();
+	const { showMoreState, supportState, googleAppState, accountProfileState, mobileComposeState, mobileSuccessMessageState } = useNavBarState();
 
 	const { createLabelState, composeMessageState } = useAsideState();
 
@@ -46,15 +47,17 @@ function App() {
 		<>
 			{user ? (
 				<AppWrapper>
-					{/* <div className="d-none d-xl-block">
+					<div className="d-none d-xl-block">
 						<Container.NavBar />
 					</div>
 					<div className="d-block d-xl-none">
 						<Container.MobileNavBar />
-					</div> */}
-					<Container.MobileNavBar />
+					</div>
+					{/* <Container.MobileNavBar /> */}
 
 					{mobileComposeState && <Container.MobileCompose />}
+					{mobileSuccessMessageState && <SuccessMessage />}
+					{/* <SuccessMessage /> */}
 					<Outlet />
 					{/* Other Components when clicked or hovered */}
 					{createLabelState && <Container.CreateLabelModal />}

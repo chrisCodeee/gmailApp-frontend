@@ -23,6 +23,9 @@ interface NavBarProps {
 
 	mobileComposeState: boolean;
 	setMobileComposeState: (state: boolean) => void;
+
+	mobileSuccessMessageState: boolean;
+	setMobileSuccessMesssage: (state: boolean) => void;
 }
 
 const useNavBarState = create<NavBarProps>((set) => ({
@@ -48,6 +51,9 @@ const useNavBarState = create<NavBarProps>((set) => ({
 
 	mobileComposeState: false,
 	setMobileComposeState: (state) => set(() => ({ mobileComposeState: state })),
+
+	mobileSuccessMessageState: false,
+	setMobileSuccessMesssage: (state) => set(() => ({ mobileSuccessMessageState: state })),
 }));
 
 export default useNavBarState;

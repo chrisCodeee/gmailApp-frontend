@@ -179,3 +179,7 @@ li {
 	transform: scale(0.9);
 	background-color: #fff;
 }
+
+.animate__animated.animate__slideInDown {
+	--animate-duration: 700ms;
+}

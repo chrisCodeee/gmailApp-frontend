@@ -1,8 +1,83 @@
-import { useNavBarState } from "../../state-management";
+import axios, { CanceledError } from "axios";
+import { FormEvent, useState } from "react";
+import { useCompose, useUser } from "../../hooks";
+import { useInboxState, useNavBarState } from "../../state-management";
+import { validateSendEmail } from "../scheduleSend/component/useScheduleSend";
 import { MobileViewComposeWrapper } from "./MobileViewComposeStyle";
 
 const MobileCompose = () => {
-	const { setMobileComposeState } = useNavBarState();
+	const { setMobileComposeState, setMobileSuccessMesssage } = useNavBarState();
+	const { useComposeMessage } = useCompose();
+	const { setMessage } = useInboxState();
+	const [isEmail, setIsEmail] = useState(false);
+
+	const { username, firstName, lastName } = useUser();
+
+	const message = {
+		email: useComposeMessage.recipientEmailAddress,
+		subject: useComposeMessage.emailSubject,
+		body: useComposeMessage.contentEditable,
+		sender: `${firstName} ${lastName}`,
+	};
+
+	const handleInput = (event: FormEvent<HTMLDivElement>) => {
+		useComposeMessage.setContentEditable(event.currentTarget.textContent || "");
+	};
+
+	const getMessages = () => {
+		const controller = new AbortController();
+		axios
+			.get(`http://localhost:8080/getmessage/${username}`, {
+				signal: controller.signal,
+			})
+			.then((res) => {
+				if (res.status === 200) {
+					console.log(res.data);
+					setMessage(res.data);
+				}
+			})
+			.catch((err) => {
+				if (err instanceof CanceledError) return;
+				console.log(err);
+			});
+		return () => controller.abort();
+	};
+
+	const sendMessage = () => {
+		const { error } = validateSendEmail(useComposeMessage.recipientEmailAddress);
+
+		if (useComposeMessage.recipientEmailAddress === "") {
+			setTimeout(() => {
+				setIsEmail(false);
+			}, 5000);
+
+			return setIsEmail(true);
+		}
+
+		if (error) {
+			return alert(`'${useComposeMessage.recipientEmailAddress}' isn't a valid email address. Try sending again after fixing it.`);
+		}
+
+		setTimeout(() => {
+			setMobileSuccessMesssage(false);
+		}, 5000);
+
+		axios
+			.post(`http://localhost:8080/sendmessage/`, message)
+			.then((res) => {
+				if (res.status === 200) {
+					setMobileComposeState(false);
+					setMobileSuccessMesssage(true);
+
+					setTimeout(() => {
+						getMessages();
+					}, 1000);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
 	return (
 		<MobileViewComposeWrapper>
@@ -10,12 +85,20 @@ const MobileCompose = () => {
 				<button className="closeBtn" onClick={() => setMobileComposeState(false)}>
 					Close
 				</button>
-				<button className="sendBtn">Send</button>
+				<button className="sendBtn" onClick={sendMessage}>
+					Send
+				</button>
 			</div>
+
+			{isEmail && (
+				<div className="" style={{ textAlign: "center", backgroundColor: "rgb(255, 245, 194)", padding: ".6rem 0", fontWeight: "500" }}>
+					Please add a recipient.
+				</div>
+			)}
 
 			<div className="d-flex align-items-center inputwrapper">
 				<label htmlFor="email">To:</label>
-				<input type="text" id="email" style={{ width: "100%", margin: "0 0 0 .5rem" }} />
+				<input type="text" id="email" style={{ width: "100%", margin: "0 0 0 .5rem" }} value={useComposeMessage.recipientEmailAddress ? useComposeMessage.recipientEmailAddress : ""} onChange={(e) => useComposeMessage.setRecipientEmailAddress(e.target.value)} />
 			</div>
 
 			<div className="d-flex align-items-center inputwrapper">
@@ -25,10 +108,10 @@ const MobileCompose = () => {
 
 			<div className="d-flex align-items-center inputwrapper">
 				<label htmlFor="subject">Subject:</label>
-				<input type="text" id="subject" style={{ width: "100%", margin: "0 0 0 .5rem" }} />
+				<input type="text" id="subject" style={{ width: "100%", margin: "0 0 0 .5rem" }} value={useComposeMessage.emailSubject} onChange={(e) => useComposeMessage.setEmailSubject(e.target.value)} />
 			</div>
 
-			<div className="textarea" contentEditable></div>
+			<div className="textarea" contentEditable onInput={handleInput}></div>
 
 			<p style={{ textAlign: "center", fontSize: "1.05rem", color: "#000" }}>&copy; 2024 Google</p>
 		</MobileViewComposeWrapper>

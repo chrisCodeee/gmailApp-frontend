@@ -47,10 +47,6 @@ const Compose = () => {
 	};
 
 	const sendMessage = () => {
-		// if (!message.subject && !message.body) {
-		// 	return useComposeMessage.setScheduleSendCheckPopUpOn();
-		// }
-
 		const { error } = validateSendEmail(useComposeMessage.recipientEmailAddress);
 
 		if (useComposeMessage.recipientEmailAddress === "") {
@@ -130,15 +126,11 @@ const Compose = () => {
 							</ComposeStyle.ComposeFormInputContainer>
 
 							<div className="mt-2" onClick={useComposeMessage.setRecipientStateOff} style={{ height: useComposeMessage.maximizeState ? "443px" : "322px", position: "relative", overflowY: "hidden" }}>
-								{/* <ComposeStyle.ComposeMessageTextArea textStyle={textAreaStyle} /> */}
 								<ComposeStyle.ComposeMessageTextArea textstyle={textAreaStyle} contentEditable onInput={handleInput} onClick={useComposeMessage.setComposeHeading} onPointerLeave={useComposeMessage.setComposeHeadingOff}>
-									{/* {useComposeMessage.contentEditable.map((text: any) => text)} */}
 									{useComposeMessage.composeUrlText.map((text) => (
-										// <ComposeStyle.ComposeUrlTextWrapper style={{ position: "absolute", top: "20px" }} textstyle={textAreaStyle} key={text}>
 										<Link to={`http://www.${useComposeMessage.urlText}`} target="_blank">
 											{text}
 										</Link>
-										// </ComposeStyle.ComposeUrlTextWrapper>
 									))}
 								</ComposeStyle.ComposeMessageTextArea>
 							</div>
