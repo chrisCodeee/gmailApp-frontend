@@ -96,11 +96,11 @@ li {
 
 @media screen and (max-width: 1140px) {
 	html {
-		font-size: 60%;
+		font-size: 80%;
 	}
 }
 
-@media screen and (max-width: 992px) {
+/* @media screen and (max-width: 992px) {
 	html {
 		font-size: 55%;
 	}
@@ -128,7 +128,7 @@ li {
 	html {
 		font-size: 25%;
 	}
-}
+} */
 
 /* Inbox Hover Icon State */
 .iconHover {

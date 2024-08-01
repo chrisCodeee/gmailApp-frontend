@@ -21,7 +21,7 @@ const MobileViewComposeWrapper = styled.div`
 			border-radius: 3px;
 			font-weight: 500;
 			font-size: 1.3rem;
-			padding: 0.3rem 1.2rem 0.5rem 1.2rem;
+			padding: 0.5rem 1.2rem;
 
 			&:hover {
 				background-color: rgba(229, 236, 247, 0.01);
@@ -34,7 +34,7 @@ const MobileViewComposeWrapper = styled.div`
 			border-radius: 3px;
 			font-weight: 500;
 			font-size: 1.3rem;
-			padding: 0.3rem 1.2rem 0.5rem 1.2rem;
+			padding: 0.5rem 1.2rem;
 
 			&:hover {
 				background-color: rgb(11, 87, 208);
