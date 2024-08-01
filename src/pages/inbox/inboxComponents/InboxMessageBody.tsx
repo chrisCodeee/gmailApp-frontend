@@ -80,10 +80,10 @@ const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
 				</InboxMessageBodyWrapperSubject>
 
 				<div className="d-block d-xl-none">
-					{items.subject ? <div style={{ fontSize: "1.4rem", textAlign: "left" }}>{items.subject.length >= 75 ? items.subject.slice(0, 90) : items.subject}</div> : <div>(no subject)</div>}
+					{items.subject ? <div style={{ textAlign: "left" }}>{items.subject.length >= 75 ? items.subject.slice(0, 50) : items.subject}</div> : <div>(no subject)</div>}
 
 					<div className="d-flex justify-content-between align-items-center">
-						<div style={{ textAlign: "left" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 80)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 100)}${items.body && "..."}` : items.body}</div>
+						<div style={{ textAlign: "left" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 80)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 45)}${items.body && "..."}` : items.body}</div>
 
 						<div className="d-flex align-items-center" onClick={() => setIsStar(items._id)}>
 							{isStar === items._id ? <MdOutlineStarPurple500 size={25} color="rgba(207, 179, 19, 0.9)" /> : <MdOutlineStarOutline size={25} color="rgba(0,0,0,0.2)" />}

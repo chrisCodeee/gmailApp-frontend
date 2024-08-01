@@ -50,7 +50,7 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 				</div>
 
 				<div className="d-block d-xl-none me-3">
-					<input id="checkbox" type="checkbox" style={{ height: "17px", width: "17px" }} />
+					<input id="checkbox" type="checkbox" style={{ height: "19px", width: "19px" }} />
 				</div>
 
 				<div className="d-flex flex-column flex-xl-row flex-grow-1">
@@ -59,7 +59,7 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 					</div>
 
 					<div className="d-flex d-xl-none justify-content-between align-items-center">
-						<div className="d-flex col-xl-2 align-items-center" style={{ fontWeight: "500", fontSize: "1.65rem" }}>
+						<div className="d-flex col-xl-2 align-items-center" style={{ fontWeight: "500", fontSize: "1.7rem" }}>
 							{items.sender}
 						</div>
 						<InboxMessageTime>{time}</InboxMessageTime>
