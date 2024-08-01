@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const MobileNavBarWrapper = styled.nav`
 	width: 100vw;
+	background-color: rgb(241, 241, 241);
 
 	& .compose {
 		background-color: rgb(199, 59, 59);

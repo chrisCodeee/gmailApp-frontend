@@ -32,8 +32,9 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 
 	let time;
 	new Date().getDate() - day >= 1 ? (time = pastDate) : (time = `${strHours}:${minutes} ${ampm}`);
+
 	return (
-		<InboxMessageContainer style={{ backgroundColor: items.bgColor }}>
+		<InboxMessageContainer className="px-3 px-xl-2" style={{ backgroundColor: items.bgColor }}>
 			<InboxMessageWrapper className="d-flex py-3 py-xl-1">
 				<div className="d-none d-xl-flex">
 					<Icon>
@@ -59,7 +60,7 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 					</div>
 
 					<div className="d-flex d-xl-none justify-content-between align-items-center">
-						<div className="d-flex col-xl-2 align-items-center" style={{ fontWeight: "500", fontSize: "1.7rem" }}>
+						<div className="d-flex col-xl-2 align-items-center" style={{ fontWeight: "600", fontSize: "1.7rem" }}>
 							{items.sender}
 						</div>
 						<InboxMessageTime>{time}</InboxMessageTime>
