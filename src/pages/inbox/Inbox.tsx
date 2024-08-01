@@ -27,7 +27,7 @@ const Inbox = () => {
 		<InboxContainer>
 			{/* Category Labels */}
 			<div>
-				<div className="d-flex d-xl-none align-items-center ps-3" style={{ backgroundColor: "#fff", borderBottom: "1px solid rgba(0, 0, 0, 0.2)", padding: ".7rem 0" }}>
+				<div className="d-flex d-xl-none align-items-center" style={{ backgroundColor: "#fff", borderBottom: "1px solid rgba(0, 0, 0, 0.2)", padding: ".8rem 1rem" }}>
 					<div>
 						<IoSearchSharp size={iconStyle.iconSize} color={iconStyle.iconColor} />
 					</div>
