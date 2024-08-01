@@ -31,7 +31,7 @@ const Inbox = () => {
 					<div>
 						<IoSearchSharp size={iconStyle.iconSize} color={iconStyle.iconColor} />
 					</div>
-					<input type="search" style={{ width: "100%", fontSize: "1.6rem", padding: "0 .2rem", margin: "0 .8rem 0 .5rem" }} placeholder="Search" />
+					<input type="search" style={{ width: "100%", fontSize: "1.6rem", padding: "0 .5rem", margin: "0 .8rem 0 .5rem" }} placeholder="Search" />
 					<button className="btn-cancel">Cancel</button>
 				</div>
 
