@@ -51,8 +51,8 @@ const MobileViewComposeWrapper = styled.div`
 		& input {
 			border-radius: 3px;
 			border: 2px solid #fff;
-			height: 20px;
-			padding: 0 0.5rem 0.5rem 0.5rem;
+			max-height: 2rem;
+			padding: 0.5rem;
 			font-weight: 500;
 
 			&:focus {
