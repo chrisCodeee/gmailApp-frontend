@@ -140,9 +140,8 @@ const InboxMessageContainer = styled.button`
 
 const InboxMessageWrapper = styled.div`
 	align-items: center;
-	padding: 0 0rem 0 0.2rem;
 	margin: 0;
-	display: flex;
+	// display: flex;
 	flex-wrap: no-wrap;
 `;
 
@@ -150,12 +149,15 @@ const InboxSubjectWrapper = styled.div`
 	display: flex;
 	// padding: 0 0rem 0 0;
 	align-items: center;
-	width: 260px;
+	// width: 280px;
 	cursor: pointer;
+
+	@media screen and (max-width: 1140px) {
+		width: fit-content;
+	}
 `;
 
 const InboxMessageBodyWrapper = styled.div`
-	display: flex;
 	align-items: center;
 	align-self: stretch;
 	flex-grow: 1;
@@ -163,7 +165,6 @@ const InboxMessageBodyWrapper = styled.div`
 
 const InboxMessageBodyWrapperSubject = styled.div`
 	flex-grow: 1;
-	display: flex;
 	align-items: center;
 `;
 

@@ -3,9 +3,13 @@ import styled from "styled-components";
 const MessageWrapper = styled.div`
 	position: relative;
 	height: 80vh;
-	// width: 100%;
+	width: 100%;
 	overflow-y: auto;
-	padding: 0 0.7rem 0 0.2rem;
+	padding: 0 0.7rem 0 0;
+
+	@media screen and (max-width: 1140px) {
+		padding: 0;
+	}
 
 	@media screen and (max-width: 992px) {
 		height: 90vh;

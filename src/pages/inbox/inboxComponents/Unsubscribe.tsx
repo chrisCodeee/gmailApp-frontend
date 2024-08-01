@@ -52,7 +52,7 @@ const Unsubscribe = ({ messageId }: Props) => {
 	};
 	return (
 		<>
-			<UnsubscribeWrapper>
+			<UnsubscribeWrapper className="d-none d-xl-flex">
 				<UnsubscribeText>Unsubscribe</UnsubscribeText>
 				<div title="Archive">
 					<Icon>

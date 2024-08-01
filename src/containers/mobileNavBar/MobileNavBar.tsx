@@ -1,5 +1,4 @@
 import { IoMdMenu } from "react-icons/io";
-import { Icon } from "../../components";
 import { MdOutlineRefresh } from "react-icons/md";
 import { upperIconSize } from "../messages/UpperMessage";
 import { HiPencil } from "react-icons/hi";
@@ -20,17 +19,13 @@ const MobileNavBar = () => {
 
 	return (
 		<MobileNavBarWrapper>
-			<div className="nav d-flex justify-content-between align-items-center px-3">
+			<div className="nav d-flex justify-content-between align-items-center px-2 py-2">
 				<div className="d-flex">
-					<div>
-						<Icon>
-							<IoMdMenu size={iconStyle.iconSize} color={iconStyle.iconColor} />
-						</Icon>
+					<div className="me-3">
+						<IoMdMenu size={iconStyle.iconSize} color={iconStyle.iconColor} />
 					</div>
 					<div onClick={() => refreshPage()}>
-						<Icon>
-							<MdOutlineRefresh size={upperIconSize} />
-						</Icon>
+						<MdOutlineRefresh size={upperIconSize} />
 					</div>
 				</div>
 

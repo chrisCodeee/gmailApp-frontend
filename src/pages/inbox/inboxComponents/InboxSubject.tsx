@@ -1,7 +1,3 @@
-import { RiStarSLine } from "react-icons/ri";
-import { SelectItemsHover } from ".";
-import { Icon } from "../../../components";
-import { iconSize } from "../../../components/list/useListParams";
 import { InboxSubjectWrapper } from "../InboxStyles";
 
 export interface InboxSubjectProps {
@@ -12,20 +8,6 @@ const InboxSubject = ({ sender }: InboxSubjectProps) => {
 	return (
 		<>
 			<InboxSubjectWrapper>
-				<Icon>
-					<div className="iconHover" style={{ position: "absolute", left: "-7px", opacity: ".3" }}>
-						<SelectItemsHover />
-					</div>
-
-					<input id="checkbox" type="checkbox" style={{ height: "17px", width: "17px" }} />
-				</Icon>
-
-				<div className="iconStar" style={{ marginLeft: "-13px" }}>
-					<Icon>
-						<RiStarSLine size={iconSize} />
-					</Icon>
-				</div>
-
 				<h4>{sender}</h4>
 			</InboxSubjectWrapper>
 		</>

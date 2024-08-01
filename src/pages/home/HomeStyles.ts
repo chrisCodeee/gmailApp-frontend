@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 const MainContainer = styled.main`
 	display: flex;
-	margin: 1rem 0 0 0;
-	width: 100vw;
+	max-width: 100vw;
 	// flex-wrap: wrap;
 	// overflow: hidden;
 	position: relative;

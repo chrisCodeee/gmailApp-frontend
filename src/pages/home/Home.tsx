@@ -44,7 +44,7 @@ const Home = () => {
 				</div>
 			)}
 
-			<MessageContainer>
+			<MessageContainer className="mt-0 mt-xl-2">
 				<Messages />
 			</MessageContainer>
 

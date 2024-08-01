@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const MobileNavBarWrapper = styled.nav`
+	width: 100vw;
+
 	& .compose {
 		background-color: rgb(199, 59, 59);
 		border-radius: 5px;

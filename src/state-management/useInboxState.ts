@@ -38,6 +38,9 @@ interface InboxProps {
 
 	errorMessage: string;
 	setErrorMessage: (text: string) => void;
+
+	isStar: string;
+	setIsStar: (id: string) => void;
 }
 
 const useInboxState = create<InboxProps>((set) => ({
@@ -71,6 +74,9 @@ const useInboxState = create<InboxProps>((set) => ({
 
 	errorMessage: "",
 	setErrorMessage: (text) => set(() => ({ errorMessage: text })),
+
+	isStar: "",
+	setIsStar: (id) => set(() => ({ isStar: id })),
 }));
 
 export default useInboxState;

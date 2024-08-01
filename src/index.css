@@ -49,6 +49,7 @@ body {
 	font-size: 1.4rem;
 	background-color: var(--color-primary);
 	height: 100vh;
+	width: 100vw;
 	color: var(--color-text);
 	user-select: inherit;
 	/* color: rgb(133, 52, 52); */
@@ -96,7 +97,7 @@ li {
 
 @media screen and (max-width: 1140px) {
 	html {
-		font-size: 80%;
+		font-size: 62%;
 	}
 }
 

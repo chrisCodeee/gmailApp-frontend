@@ -27,8 +27,8 @@ const Inbox = () => {
 		<InboxContainer>
 			{/* Category Labels */}
 			<div>
-				<div className="d-flex d-xl-none align-items-center" style={{ backgroundColor: "#fff", padding: ".7rem 1rem", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
-					<div className="ms-2">
+				<div className="d-flex d-xl-none align-items-center ps-2 py-1" style={{ backgroundColor: "#fff", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
+					<div>
 						<IoSearchSharp size={iconStyle.iconSize} color={iconStyle.iconColor} />
 					</div>
 					<input type="search" style={{ width: "100%", fontSize: "1.6rem", padding: "0 .2rem", margin: "0 .8rem 0 .5rem" }} placeholder="Search" />
@@ -54,8 +54,8 @@ const Inbox = () => {
 							</p>
 						</div>
 
-						<div className="d-block d-xl-none" style={{ width: "fit-content", margin: "2rem auto", color: "rgba(0,0,0,0.7)" }}>
-							<img src={MobileNoMessage} alt="no message" style={{ width: "110px", marginLeft: "8px" }} />
+						<div className="d-block d-xl-none" style={{ width: "fit-content", textAlign: "center", margin: "2rem auto", color: "rgba(0,0,0,0.7)" }}>
+							<img src={MobileNoMessage} alt="no message" style={{ width: "110px", display: "block", margin: "auto" }} />
 							<div style={{ textAlign: "center" }}>
 								<p style={{ margin: "0" }}>You have no mail.</p>
 								<p>Please enjoy your day!</p>
