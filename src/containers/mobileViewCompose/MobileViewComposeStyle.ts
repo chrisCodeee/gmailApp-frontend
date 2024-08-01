@@ -51,9 +51,7 @@ const MobileViewComposeWrapper = styled.div`
 		& input {
 			border-radius: 3px;
 			border: 2px solid #fff;
-			// max-height: 2rem;
-			padding: 0.5rem;
-			font-weight: 500;
+			padding: 0 0.5rem;
 
 			&:focus {
 				border: 2px solid #000;
@@ -62,6 +60,7 @@ const MobileViewComposeWrapper = styled.div`
 
 		& label {
 			cursor: pointer;
+			color: rgba(0, 0, 0, 0.5);
 		}
 	}
 
