@@ -53,7 +53,7 @@ function App() {
 					<div className="d-block d-xl-none">
 						<Container.MobileNavBar />
 					</div>
-					{/* <Container.MobileNavBar /> */}
+					<Container.MobileViewMenu />
 
 					{mobileComposeState && <Container.MobileCompose />}
 					{mobileSuccessMessageState && <SuccessMessage />}

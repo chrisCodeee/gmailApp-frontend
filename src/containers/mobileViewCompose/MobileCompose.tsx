@@ -113,7 +113,7 @@ const MobileCompose = () => {
 
 			<div className="textarea" contentEditable onInput={handleInput}></div>
 
-			<p style={{ textAlign: "center", fontSize: "1.05rem", color: "#000" }}>&copy; 2024 Google</p>
+			<p style={{ textAlign: "center", fontSize: "1.05rem", color: "#000" }}>&copy; {new Date().getFullYear()} Google</p>
 		</MobileViewComposeWrapper>
 	);
 };
