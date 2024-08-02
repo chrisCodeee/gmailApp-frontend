@@ -19,7 +19,7 @@ function App() {
 
 	const { useComposeMessage } = useCompose();
 
-	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, setMessage } = useInboxState();
+	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, mobileMenuState, setMessage } = useInboxState();
 
 	const { user, username } = useUser();
 
@@ -53,7 +53,8 @@ function App() {
 					<div className="d-block d-xl-none">
 						<Container.MobileNavBar />
 					</div>
-					<Container.MobileViewMenu />
+
+					{mobileMenuState && <Container.MobileViewMenu />}
 
 					{mobileComposeState && <Container.MobileCompose />}
 					{mobileSuccessMessageState && <SuccessMessage />}
