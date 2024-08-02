@@ -47,8 +47,8 @@ interface InboxProps {
 	setMobileMenu: (state: boolean) => void;
 
 	mobileCategory: string;
-	count: string | number;
-	setMobileCategory: (category: string, count: string | number) => void;
+	count?: string | number;
+	setMobileCategory: (category: string, count?: string | number) => void;
 }
 
 const useInboxState = create<InboxProps>((set) => ({

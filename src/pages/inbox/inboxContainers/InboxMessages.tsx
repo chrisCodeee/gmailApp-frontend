@@ -35,7 +35,7 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 
 	return (
 		<InboxMessageContainer className="px-3 px-xl-2" style={{ backgroundColor: items.bgColor }}>
-			<InboxMessageWrapper className="d-flex py-3 py-xl-1">
+			<InboxMessageWrapper className="d-flex py-xl-1" style={{ padding: ".6rem 0" }}>
 				<div className="d-none d-xl-flex">
 					<Icon>
 						<div className="iconHover" style={{ position: "absolute", left: "-7px", opacity: ".3" }}>

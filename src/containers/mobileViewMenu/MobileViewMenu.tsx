@@ -4,23 +4,21 @@ import { IoMdSettings } from "react-icons/io";
 import { HiInbox } from "react-icons/hi2";
 import MobileViewMenuCategory from "./MobileViewMenuCategory";
 import { FaInfoCircle, FaTags } from "react-icons/fa";
-import { useInboxState } from "../../state-management";
 
 const MobileViewMenu = () => {
 	const { username } = useUser();
-	const { setMobileCategory } = useInboxState();
 
 	const mobileCategory = [
-		{ name: "Primary", icon: <HiInbox size={21} color="rgba(0,0,0,0.6)" />, badge: "99+", badgeColor: "rgba(0,0,0,0.6)", count: 120 },
-		{ name: "Social", icon: <MdGroup size={21} color="rgba(0,0,0,0.6)" />, badge: "", count: "" },
-		{ name: "Promotions", icon: <FaTags size={21} color="rgba(0,0,0,0.6)" />, badge: "2 new", badgeColor: "#188038", count: "" },
-		{ name: "Updates", icon: <FaInfoCircle size={21} color="rgba(0,0,0,0.6)" />, badge: "1 new", badgeColor: "rgb(255, 191, 0)", count: "" },
+		{ name: "Primary", icon: <HiInbox size={21} color="rgba(0,0,0,0.6)" />, badge: "99+", badgeColor: "rgba(0,0,0,0.6)", count: 120, link: "/inbox" },
+		{ name: "Social", icon: <MdGroup size={21} color="rgba(0,0,0,0.6)" />, badge: "", count: "", link: "/inbox" },
+		{ name: "Promotions", icon: <FaTags size={21} color="rgba(0,0,0,0.6)" />, badge: "2 new", badgeColor: "#188038", count: "", link: "/promotion" },
+		{ name: "Updates", icon: <FaInfoCircle size={21} color="rgba(0,0,0,0.6)" />, badge: "1 new", badgeColor: "rgb(255, 191, 0)", count: "", link: "/inbox" },
 	];
 
 	const label = [
-		{ name: "Starred", link: "" },
-		{ name: "Sent Mail", link: "" },
-		{ name: "Drafts", link: "" },
+		{ name: "Starred", link: "/starred" },
+		{ name: "Sent Mail", link: "/sent" },
+		{ name: "Drafts", link: "/draft" },
 	];
 
 	const more = [
@@ -54,9 +52,9 @@ const MobileViewMenu = () => {
 
 					<ul className="m-0">
 						{mobileCategory.map((items) => (
-							<div key={items.name} onClick={() => setMobileCategory(items.name, items.count)}>
-								<MobileViewMenuCategory items={items} fontweight />
-							</div>
+							// <div key={items.name} onClick={() => setMobileCategory(items.name, items.count)}>
+							<MobileViewMenuCategory items={items} key={items.name} fontweight />
+							// </div>
 						))}
 					</ul>
 				</div>
