@@ -79,11 +79,35 @@ const InboxMessageBody = ({ items }: InboxMessageBodyParams) => {
 					)}
 				</InboxMessageBodyWrapperSubject>
 
-				<div className="d-block d-xl-none">
+				<div className="d-block d-sm-none">
 					{items.subject ? <div style={{ textAlign: "left", color: "#000" }}>{items.subject.length >= 75 ? items.subject.slice(0, 35) : items.subject}</div> : <div>(no subject)</div>}
 
 					<div className="d-flex justify-content-between align-items-center">
 						<div style={{ textAlign: "left", fontSize: "1.3rem", color: "rgba(0,0,0,0.7)" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 40)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 45)}${items.body && "..."}` : items.body}</div>
+
+						<div className="d-flex align-items-center" onClick={() => setIsStar(items._id)}>
+							{isStar === items._id && isStarState ? <MdOutlineStarPurple500 size={25} color="rgb(255, 191, 0)" /> : <MdOutlineStarOutline size={25} color="rgba(0,0,0,.6)" />}
+						</div>
+					</div>
+				</div>
+
+				<div className="d-none d-sm-block d-md-none">
+					{items.subject ? <div style={{ textAlign: "left", color: "#000" }}>{items.subject.length >= 75 ? items.subject.slice(0, 65) : items.subject}</div> : <div>(no subject)</div>}
+
+					<div className="d-flex justify-content-between align-items-center">
+						<div style={{ textAlign: "left", fontSize: "1.3rem", color: "rgba(0,0,0,0.7)" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 40)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 85)}${items.body && "..."}` : items.body}</div>
+
+						<div className="d-flex align-items-center" onClick={() => setIsStar(items._id)}>
+							{isStar === items._id && isStarState ? <MdOutlineStarPurple500 size={25} color="rgb(255, 191, 0)" /> : <MdOutlineStarOutline size={25} color="rgba(0,0,0,.6)" />}
+						</div>
+					</div>
+				</div>
+
+				<div className="d-none d-md-block d-xl-none">
+					{items.subject ? <div style={{ textAlign: "left", color: "#000" }}>{items.subject.length >= 75 ? items.subject.slice(0, 75) : items.subject}</div> : <div>(no subject)</div>}
+
+					<div className="d-flex justify-content-between align-items-center">
+						<div style={{ textAlign: "left", fontSize: "1.3rem", color: "rgba(0,0,0,0.7)" }}>{items.subject.length < 15 ? `${items.body.slice(0, 110)}` : items.subject.length < 75 ? `${items.body.slice(0, 40)}${items.body && "..."}` : items.subject.length >= 75 ? `${items.body.slice(0, 180)}${items.body && "..."}` : items.body}</div>
 
 						<div className="d-flex align-items-center" onClick={() => setIsStar(items._id)}>
 							{isStar === items._id && isStarState ? <MdOutlineStarPurple500 size={25} color="rgb(255, 191, 0)" /> : <MdOutlineStarOutline size={25} color="rgba(0,0,0,.6)" />}
