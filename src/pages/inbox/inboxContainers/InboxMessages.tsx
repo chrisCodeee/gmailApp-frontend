@@ -51,7 +51,7 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 				</div>
 
 				<div className="d-block d-xl-none me-3">
-					<input id="checkbox" type="checkbox" style={{ height: "19px", width: "19px" }} />
+					<input id="checkbox" type="checkbox" style={{ height: "17px", width: "17px" }} />
 				</div>
 
 				<div className="d-flex flex-column flex-xl-row flex-grow-1">

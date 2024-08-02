@@ -110,6 +110,25 @@ const InboxMessageContainer = styled.button`
 	cursor: pointer;
 	transition: all 0.1s;
 	width: 100%;
+	position: relative;
+
+	@media screen and (max-width: 1140px) {
+		&::before {
+			content: "";
+			display: block;
+			width: 0;
+			background-color: rgb(11, 87, 208);
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		&:focus {
+			&::before {
+				width: 4px;
+			}
+		}
+	}
 
 	& input,
 	& .iconStar {
@@ -135,6 +154,10 @@ const InboxMessageContainer = styled.button`
 		border: 0.3px solid rgba(180, 182, 187, 0.3);
 		// box-shadow: 0 1.5px 0 transparent;
 		border-top-color: transparent;
+
+		&::before {
+			width: 4px;
+		}
 	}
 `;
 
