@@ -181,6 +181,6 @@ li {
 	background-color: #fff;
 }
 
-.animate__animated.animate__slideInDown {
-	--animate-duration: 700ms;
+.animate__animated {
+	--animate-duration: 600ms;
 }

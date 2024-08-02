@@ -8,7 +8,7 @@ import { FaInfoCircle, FaTags } from "react-icons/fa";
 const MobileViewMenu = () => {
 	const { username } = useUser();
 
-	const mobileCategory = [
+	const mobileCategories = [
 		{ name: "Primary", icon: <HiInbox size={21} color="rgba(0,0,0,0.6)" />, badge: "99+", badgeColor: "rgba(0,0,0,0.6)", count: 120, link: "/inbox" },
 		{ name: "Social", icon: <MdGroup size={21} color="rgba(0,0,0,0.6)" />, badge: "", count: "", link: "/inbox" },
 		{ name: "Promotions", icon: <FaTags size={21} color="rgba(0,0,0,0.6)" />, badge: "2 new", badgeColor: "#188038", count: "", link: "/promotion" },
@@ -30,7 +30,7 @@ const MobileViewMenu = () => {
 	];
 
 	return (
-		<div style={{ position: "absolute", top: "0", left: "0", right: "0", zIndex: "1000000", width: "100vw", backgroundColor: "#fff" }}>
+		<div className="animate__animated animate__slideInLeft" style={{ position: "absolute", top: "0", left: "0", right: "0", zIndex: "1000000", width: "100vw", backgroundColor: "#fff", transform: "scale(0)" }}>
 			<div className="">
 				<div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "rgb(241, 241, 241)", padding: ".7rem 1.2rem" }}>
 					<div className="">&nbsp;</div>
@@ -51,10 +51,8 @@ const MobileViewMenu = () => {
 					</div>
 
 					<ul className="m-0">
-						{mobileCategory.map((items) => (
-							// <div key={items.name} onClick={() => setMobileCategory(items.name, items.count)}>
+						{mobileCategories.map((items) => (
 							<MobileViewMenuCategory items={items} key={items.name} fontweight />
-							// </div>
 						))}
 					</ul>
 				</div>
