@@ -51,7 +51,7 @@ const route = createBrowserRouter([
 	{ path: "/register/step_8", element: <Page8 /> },
 	{ path: "/register/step_9", element: <Page9 /> },
 	{ path: "/register/error", element: <InvalidDOB /> },
-	{ path: "/menu", element: <MobileViewMenu /> },
 	{ path: "/settings", element: <MobileViewSettings /> },
+	{ path: "/menu", element: <MobileViewMenu /> },
 ]);
 export default route;

@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 const SettingWrapper = styled.div`
-	// top: 0;
-	// left: 0;
-	// right: 0;
-	height: 100vh;
-	max-width: 100vw;
-	// z-index: 1000000000000000000000000000000000000000000;
-	// position: relative;
+	width: 100vw;
+	position: relative;
+
 	background-color: rgb(241, 241, 241);
 
 	& .settingContainer {
