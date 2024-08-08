@@ -4,9 +4,11 @@ import { IoMdSettings } from "react-icons/io";
 import { HiInbox } from "react-icons/hi2";
 import MobileViewMenuCategory from "./MobileViewMenuCategory";
 import { FaInfoCircle, FaTags } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const MobileViewMenu = () => {
 	const { username } = useUser();
+	const navigate = useNavigate();
 
 	const mobileCategories = [
 		{ name: "Primary", icon: <HiInbox size={21} color="rgba(0,0,0,0.6)" />, badge: "99+", badgeColor: "rgba(0,0,0,0.6)", count: 120, link: "/inbox" },
@@ -30,7 +32,7 @@ const MobileViewMenu = () => {
 	];
 
 	return (
-		<div className="animate__animated animate__slideInLeft" style={{ position: "absolute", top: "0", left: "0", right: "0", zIndex: "1000000", width: "100vw", backgroundColor: "#fff", transform: "scale(0)" }}>
+		<div className="animate__animated animate__slideInLeft" style={{ position: "absolute", top: "0", left: "0", right: "0", zIndex: "1000000", width: "100vw", backgroundColor: "#fff" }}>
 			<div className="">
 				<div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "rgb(241, 241, 241)", padding: ".7rem 1.2rem" }}>
 					<div className="">&nbsp;</div>
@@ -40,7 +42,7 @@ const MobileViewMenu = () => {
 							<MdArrowDropDown size={25} />
 						</div>
 					</div>
-					<div className="">
+					<div onClick={() => navigate("/settings")}>
 						<IoMdSettings size={25} color="rgba(0,0,0,0.6)" />
 					</div>
 				</div>

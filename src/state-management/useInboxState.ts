@@ -43,9 +43,6 @@ interface InboxProps {
 	isStarState: boolean;
 	setIsStar: (id: string) => void;
 
-	mobileMenuState: boolean;
-	setMobileMenu: (state: boolean) => void;
-
 	mobileCategory: string;
 	count?: string | number;
 	setMobileCategory: (category: string, count?: string | number) => void;
@@ -86,9 +83,6 @@ const useInboxState = create<InboxProps>((set) => ({
 	isStar: "",
 	isStarState: false,
 	setIsStar: (id) => set((store) => ({ isStar: id, isStarState: !store.isStarState })),
-
-	mobileMenuState: false,
-	setMobileMenu: (state) => set(() => ({ mobileMenuState: state })),
 
 	mobileCategory: "",
 	count: "",

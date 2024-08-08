@@ -16,7 +16,7 @@ interface Props {
 	fontweight?: boolean;
 }
 const MobileViewMenuCategory = ({ items, fontweight }: Props) => {
-	const { setMobileMenu, setMobileCategory } = useInboxState();
+	const { setMobileCategory } = useInboxState();
 	const navigate = useNavigate();
 
 	return (
@@ -24,7 +24,6 @@ const MobileViewMenuCategory = ({ items, fontweight }: Props) => {
 			<li
 				className="d-flex justify-content-between align-items-center"
 				onClick={() => {
-					setMobileMenu(false);
 					setMobileCategory(items.name, items.count);
 					navigate(items.link);
 				}}

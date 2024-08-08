@@ -19,7 +19,7 @@ function App() {
 
 	const { useComposeMessage } = useCompose();
 
-	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, mobileMenuState, setMessage } = useInboxState();
+	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, setMessage } = useInboxState();
 
 	const { user, username } = useUser();
 
@@ -52,21 +52,18 @@ function App() {
 							<Container.NavBar />
 						</div>
 
-						{!mobileMenuState && (
-							<div className="d-block d-xl-none animate__animated animate__slideInRight">
-								<Container.MobileNavBar />
-							</div>
-						)}
+						<div className="d-block d-xl-none animate__animated animate__slideInRight">
+							<Container.MobileNavBar />
+						</div>
 
-						{mobileMenuState && <Container.MobileViewMenu />}
+						{/* {mobileMenuState && <Container.MobileViewMenu />} */}
 						{mobileComposeState && <Container.MobileCompose />}
 						{mobileSuccessMessageState && <SuccessMessage />}
 						{/* <SuccessMessage /> */}
-						{!mobileMenuState && (
-							<div className="d-block d-xl-none animate__animated animate__slideInRight">
-								<Outlet />
-							</div>
-						)}
+
+						<div className="d-block d-xl-none animate__animated animate__slideInRight">
+							<Outlet />
+						</div>
 
 						<div className="d-none d-xl-block">
 							<Outlet />

@@ -5,6 +5,7 @@ import Chats from "./pages/chats/Chats";
 import { Page1, Page2, Page3, Page4, Page5, Page6, Page7, Page8, Page9 } from "./auth/signUpPages";
 import InvalidDOB from "./auth/signUpPages/InvalidDOB";
 import { Login, UserNameRecovery, ConfirmLoginPassword, QueryRecoveryEmailName, AccountNotFound, TryAnotherwayLogin, TryAnotherwayLoginTapPhone } from "./auth";
+import { MobileViewMenu, MobileViewSettings } from "./containers";
 
 const route = createBrowserRouter([
 	{
@@ -50,5 +51,7 @@ const route = createBrowserRouter([
 	{ path: "/register/step_8", element: <Page8 /> },
 	{ path: "/register/step_9", element: <Page9 /> },
 	{ path: "/register/error", element: <InvalidDOB /> },
+	{ path: "/menu", element: <MobileViewMenu /> },
+	{ path: "/settings", element: <MobileViewSettings /> },
 ]);
 export default route;

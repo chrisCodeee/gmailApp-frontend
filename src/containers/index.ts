@@ -1,6 +1,7 @@
 export { default as NavBar } from "./navBar/NavBar";
 export { default as MobileNavBar } from "./mobileNavBar/MobileNavBar";
 export { default as MobileViewMenu } from "./mobileViewMenu/MobileViewMenu";
+export { default as MobileViewSettings } from "./mobileViewSettings/MobileViewSettings";
 export { default as Main } from "./main/Main";
 export { default as Aside } from "./aside/Aside";
 export { default as Messages } from "./messages/Messages";
