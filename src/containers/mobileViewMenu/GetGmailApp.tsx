@@ -22,7 +22,7 @@ const GetGmailApp = () => {
 					</div>
 				</div>
 
-				<Link to="https://apps.apple.com/us/app/gmail-email-by-google/" target="_blank" style={{ color: "rgb(11, 87, 208)", textTransform: "uppercase", fontWeight: "500" }}>
+				<Link to="https://apps.apple.com/us/app/gmail-email-by-google/id422689480" target="_blank" style={{ color: "rgb(11, 87, 208)", textTransform: "uppercase", fontWeight: "500" }}>
 					Open
 				</Link>
 			</div>
