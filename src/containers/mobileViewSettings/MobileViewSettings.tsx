@@ -24,7 +24,7 @@ const MobileViewSettings = () => {
 					</button>
 					<div style={{ fontSize: "1.3rem" }}>{username}</div>
 					<button className="apply" disabled={!toggleSignature && !toggleVacation}>
-						Apply
+						Apply Test
 					</button>
 				</SettingHeader>
 				<div className="settingContainer">
