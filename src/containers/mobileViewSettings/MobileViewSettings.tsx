@@ -5,6 +5,7 @@ import { MobileMenuBg } from "../../assets";
 import { useState } from "react";
 import { useNavBarState } from "../../state-management";
 import HelpAndFeedback from "./HelpAndFeedback";
+import GetGmailApp from "../mobileViewMenu/GetGmailApp";
 
 const MobileViewSettings = () => {
 	const { username } = useUser();
@@ -17,6 +18,7 @@ const MobileViewSettings = () => {
 
 	return (
 		<>
+			<GetGmailApp />
 			<SettingWrapper className="animate__animated animate__slideInRight">
 				<SettingHeader $bg={MobileMenuBg} $toggleSignature={toggleSignature.toString()} $toggleVacation={toggleVacation.toString()}>
 					<button className="menu" onClick={() => navigate("/menu")}>

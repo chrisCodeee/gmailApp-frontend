@@ -11,6 +11,7 @@ import { ScheduleAppointment } from "../containers/moreOptionSetUpTimeAndDate/co
 import axios, { CanceledError } from "axios";
 import { useEffect } from "react";
 import SuccessMessage from "../containers/mobileViewCompose/SuccessMessage";
+import GetGmailApp from "../containers/mobileViewMenu/GetGmailApp";
 
 function App() {
 	const { showMoreState, supportState, googleAppState, accountProfileState, mobileComposeState, mobileSuccessMessageState } = useNavBarState();
@@ -53,7 +54,10 @@ function App() {
 						</div>
 
 						<div className="d-block d-xl-none animate__animated animate__slideInRight">
-							<Container.MobileNavBar />
+							<>
+								<GetGmailApp />
+								<Container.MobileNavBar />
+							</>
 						</div>
 
 						{/* {mobileMenuState && <Container.MobileViewMenu />} */}
