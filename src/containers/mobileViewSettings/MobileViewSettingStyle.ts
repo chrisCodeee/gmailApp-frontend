@@ -25,7 +25,7 @@ const SettingHeader = styled.div<{ $bg: string; $toggleSignature: string; $toggl
 	background-color: rgb(241, 241, 241);
 	padding: 0.7rem 1.2rem;
 	font-weight: 500;
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 	display: flex;
@@ -60,7 +60,7 @@ const HelpAndFeedbackWrapper = styled.div`
 
 	& .container {
 		position: absolute;
-		bottom: 0;
+		bottom: -1px;
 		left: 0;
 		right: 0;
 		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(113, 119, 124)), to(rgb(60, 66, 73)));

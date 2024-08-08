@@ -22,7 +22,7 @@ const MobileViewSettings = () => {
 					<button className="menu" onClick={() => navigate("/menu")}>
 						Menu
 					</button>
-					<div style={{ fontSize: "1.3rem" }}>{username}</div>
+					<div style={{ fontSize: "1.4rem" }}>{username}</div>
 					<button className="apply" disabled={!toggleSignature && !toggleVacation}>
 						Apply
 					</button>
