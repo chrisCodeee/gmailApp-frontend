@@ -13,7 +13,7 @@ const GetGmailApp = () => {
 						</div>
 					</div>
 					<div className="">
-						<div className="" style={{ fontWeight: "500" }}>
+						<div className="" style={{ fontWeight: "500", fontSize: "1.5rem" }}>
 							Upgrade to a smarter Gmail
 						</div>
 						<div className="" style={{ fontSize: "1.3rem" }}>
