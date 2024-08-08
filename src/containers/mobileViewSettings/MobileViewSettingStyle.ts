@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 const SettingWrapper = styled.div`
-	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 10000000;
-	width: 100vw;
+	height: 100vh;
+	z-index: 1000000000000000000000000000000000000000000;
+	position: relative;
 	background-color: rgb(241, 241, 241);
-	width: 100vw;
+	overflow: hidden;
 
 	& .settingContainer {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);

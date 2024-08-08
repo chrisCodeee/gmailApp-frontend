@@ -52,7 +52,7 @@ body {
 	width: 100vw;
 	color: var(--color-text);
 	user-select: inherit;
-	/* color: rgb(133, 52, 52); */
+	/* overflow: hidden !important; */
 }
 
 h4 {

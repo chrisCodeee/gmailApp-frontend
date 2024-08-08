@@ -46,7 +46,7 @@ function App() {
 	return (
 		<>
 			{user ? (
-				<div style={{ width: "100vw" }}>
+				<>
 					<AppWrapper>
 						<div className="d-none d-xl-block">
 							<Container.NavBar />
@@ -93,7 +93,7 @@ function App() {
 						{messageSentState && <Container.MessageSentAlert />}
 						{/* <Container.SelectContact /> */}
 					</AppWrapper>
-				</div>
+				</>
 			) : (
 				<Navigate to="/login" />
 			)}

@@ -16,8 +16,8 @@ const MobileViewSettings = () => {
 	const [signature, setSignature] = useState("null");
 
 	return (
-		<SettingWrapper className="animate__animated animate__slideInRight" style={{ position: "relative" }}>
-			<div className="" style={{ width: "100%" }}>
+		<>
+			<SettingWrapper className="animate__animated animate__slideInRight">
 				<SettingHeader $bg={MobileMenuBg} $toggleSignature={toggleSignature.toString()} $toggleVacation={toggleVacation.toString()}>
 					<button className="menu" onClick={() => navigate("/menu")}>
 						Menu
@@ -33,38 +33,31 @@ const MobileViewSettings = () => {
 						<div className="toggle" style={{ width: "55px", height: "22px", borderRadius: "10px", backgroundColor: !toggleSignature ? "rgba(0,0,0,0.3)" : "rgba(33, 150, 243,.5)" }}>
 							&nbsp;
 						</div>
-
 						<div className="circleToggle" style={{ backgroundColor: !toggleSignature ? "#fff" : "rgb(33, 150, 243)", height: "30px", width: "30px", borderRadius: "100%", position: "absolute", top: "-5px", boxShadow: "0px 1px 2px rgba(0,0,0,0.5)", transition: "all .2s", transform: toggleSignature ? "translateX(30px)" : "translateX(0)" }}></div>
 					</div>
 				</div>
-
 				{toggleSignature && (
 					<div className="settingContainer pt-4 flex-column">
 						<input type="text" value={signature} placeholder="Mobile Signature" onChange={(e) => setSignature(e.target.value)} style={{ backgroundColor: "#fff", borderRadius: "10px", width: "100%", padding: "1.5rem", border: "1px solid rgba(0,0,0,0.1)", letterSpacing: "1px" }} />
 						<p style={{ textAlign: "center", width: "80%", fontSize: "1.4rem", margin: "0" }}>This will be used instead of your signature on desktop Gmail.</p>
 					</div>
 				)}
-
 				<div className="settingContainer">
 					<div className="text">Vacation Responder</div>
 					<div className="" style={{ position: "relative" }} onClick={() => setToggleVacation(!toggleVacation)}>
 						<div className="toggle" style={{ width: "55px", height: "22px", borderRadius: "10px", backgroundColor: !toggleVacation ? "rgba(0,0,0,0.3)" : "rgba(33, 150, 243,.5)" }}>
 							&nbsp;
 						</div>
-
 						<div className="circleToggle" style={{ backgroundColor: !toggleVacation ? "#fff" : "rgb(33, 150, 243)", height: "30px", width: "30px", borderRadius: "100%", position: "absolute", top: "-5px", boxShadow: "0px 1px 2px rgba(0,0,0,0.5)", transition: "all .2s", transform: toggleVacation ? "translateX(30px)" : "translateX(0)" }}></div>
 					</div>
 				</div>
-
 				<div className="settingContainer py-4">
 					<div className="text" onClick={() => setHelpAndFeedback(true)} style={{ backgroundColor: "#fff", borderRadius: "10px", width: "100%", textAlign: "center", padding: "1.2rem 0", border: "1px solid rgba(0,0,0,0.1)" }}>
 						Help and Feedback...
 					</div>
 				</div>
-			</div>
-
-			{helpAndFeedback && <HelpAndFeedback />}
-		</SettingWrapper>
+			</SettingWrapper>
+		</>
 	);
 };
 
