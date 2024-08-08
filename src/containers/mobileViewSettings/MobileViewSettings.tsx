@@ -17,7 +17,7 @@ const MobileViewSettings = () => {
 
 	return (
 		<SettingWrapper className="animate__animated animate__slideInRight" style={{ position: "relative" }}>
-			<div className="">
+			<div className="" style={{ width: "100%" }}>
 				<SettingHeader $bg={MobileMenuBg} $toggleSignature={toggleSignature.toString()} $toggleVacation={toggleVacation.toString()}>
 					<button className="menu" onClick={() => navigate("/menu")}>
 						Menu

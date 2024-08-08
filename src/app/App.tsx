@@ -46,7 +46,7 @@ function App() {
 	return (
 		<>
 			{user ? (
-				<div>
+				<div style={{ width: "100vw" }}>
 					<AppWrapper>
 						<div className="d-none d-xl-block">
 							<Container.NavBar />
