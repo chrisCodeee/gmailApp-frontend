@@ -8,6 +8,7 @@ const SettingWrapper = styled.div`
 	z-index: 10000000;
 	width: 100vw;
 	background-color: rgb(241, 241, 241);
+	width: 100vw;
 
 	& .settingContainer {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
