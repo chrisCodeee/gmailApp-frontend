@@ -6,15 +6,24 @@ import { useState } from "react";
 import { useNavBarState } from "../../state-management";
 import HelpAndFeedback from "./HelpAndFeedback";
 import GetGmailApp from "../mobileViewMenu/GetGmailApp";
+import SuccessMessage from "./SuccessMessage";
 
 const MobileViewSettings = () => {
 	const { username } = useUser();
-	const { helpAndFeedback, setHelpAndFeedback } = useNavBarState();
+	const { helpAndFeedback, settingSuccessMessage, setSettingSuccessMessage, setHelpAndFeedback } = useNavBarState();
 	const navigate = useNavigate();
 	const [toggleSignature, setToggleSignature] = useState(false);
 	const [toggleVacation, setToggleVacation] = useState(false);
 
 	const [signature, setSignature] = useState("null");
+
+	const applySetting = () => {
+		setSettingSuccessMessage(true);
+
+		setTimeout(() => {
+			setSettingSuccessMessage(false);
+		}, 5000);
+	};
 
 	return (
 		<>
@@ -25,7 +34,7 @@ const MobileViewSettings = () => {
 						Menu
 					</button>
 					<div style={{ fontSize: "1.4rem" }}>{username}</div>
-					<button className="apply" disabled={!toggleSignature && !toggleVacation}>
+					<button className="apply" disabled={!toggleSignature && !toggleVacation} onClick={applySetting}>
 						Apply
 					</button>
 				</SettingHeader>
@@ -61,6 +70,7 @@ const MobileViewSettings = () => {
 			</SettingWrapper>
 
 			{helpAndFeedback && <HelpAndFeedback />}
+			{settingSuccessMessage && <SuccessMessage />}
 		</>
 	);
 };
