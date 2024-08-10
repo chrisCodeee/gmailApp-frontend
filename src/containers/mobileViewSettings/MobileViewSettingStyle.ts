@@ -63,6 +63,7 @@ const HelpAndFeedbackWrapper = styled.div`
 		bottom: -1px;
 		left: 0;
 		right: 0;
+		bottom: 0;
 		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(113, 119, 124)), to(rgb(60, 66, 73)));
 
 		& .btn_wrapper {
@@ -92,7 +93,6 @@ const SendFeedbackWrapper = styled.div`
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 100vh;
 	color: rgb(227, 227, 227);
 
 	& .input {
