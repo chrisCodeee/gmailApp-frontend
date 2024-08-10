@@ -92,7 +92,7 @@ const SendFeedbackWrapper = styled.div`
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 100vh;
+	min-height: 100vh;
 	color: rgb(227, 227, 227);
 
 	& .input {

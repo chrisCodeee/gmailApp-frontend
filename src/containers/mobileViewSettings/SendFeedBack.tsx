@@ -10,7 +10,7 @@ const SendFeedBack = () => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (
-		<SendFeedbackWrapper className="animate__animated animate__fadeIn" style={{ backgroundColor: "#191919", width: "100vw", padding: "2rem 0 0 0", minHeight: "100vh" }}>
+		<SendFeedbackWrapper className="animate__animated animate__fadeIn" style={{ backgroundColor: "#191919", width: "100vw", padding: "2rem 0" }}>
 			<div className="d-flex justify-content-between align-items-center" style={{ padding: "0 2rem 1rem 2rem", boxShadow: "1px 2px 3px rgba(0,0,0,0.4)" }}>
 				<h1 className="" style={{ fontSize: "1.8rem" }}>
 					Send feedback to Google
