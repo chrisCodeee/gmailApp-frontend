@@ -87,4 +87,64 @@ const HelpAndFeedbackWrapper = styled.div`
 	}
 `;
 
-export { SettingWrapper, SettingHeader, HelpAndFeedbackWrapper };
+const SendFeedbackWrapper = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	color: rgb(227, 227, 227);
+
+	& .input {
+		font-size: 1.4rem;
+
+		& label {
+			transform: translate(15px, -113px);
+			opacity: 1;
+			transition: all .2s;
+		}
+
+		& .content {
+			outline: 1px solid rgba(227, 227, 227,.5); 
+			width: 100%; 
+			min-height: 130px; 
+			border-radius: 5px; 
+			padding: 1.5rem;
+		}
+
+		& .content:focus {
+			outline-color: rgb(124, 172, 248);
+		}
+
+		& .content:focus + label {
+				transform: translate(10px, -160px);
+				opacity: 0;
+			}
+		}
+	}
+
+
+
+	& .custom-file-input {
+  		color: transparent;
+	}
+
+	& .custom-file-input::-webkit-file-upload-button {
+  		visibility: hidden;
+	}
+
+	& .footer{
+		font-size: 1.2rem;
+		word-spacing: 3px;
+		line-height: 1.25;
+		
+		
+
+		& a{
+		  color: rgb(124, 172, 248);
+		  text-decoration: underline;
+		}
+	}
+`;
+
+export { SettingWrapper, SettingHeader, HelpAndFeedbackWrapper, SendFeedbackWrapper };

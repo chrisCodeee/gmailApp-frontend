@@ -32,6 +32,9 @@ interface NavBarProps {
 
 	settingSuccessMessage: boolean;
 	setSettingSuccessMessage: (state: boolean) => void;
+
+	sendFeedback: boolean;
+	setSendFeedback: (state: boolean) => void;
 }
 
 const useNavBarState = create<NavBarProps>((set) => ({
@@ -66,6 +69,9 @@ const useNavBarState = create<NavBarProps>((set) => ({
 
 	settingSuccessMessage: false,
 	setSettingSuccessMessage: (state) => set(() => ({ settingSuccessMessage: state })),
+
+	sendFeedback: false,
+	setSendFeedback: (state) => set(() => ({ sendFeedback: state })),
 }));
 
 export default useNavBarState;

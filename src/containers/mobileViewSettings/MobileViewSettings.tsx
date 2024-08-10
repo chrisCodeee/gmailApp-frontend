@@ -7,10 +7,11 @@ import { useNavBarState } from "../../state-management";
 import HelpAndFeedback from "./HelpAndFeedback";
 import GetGmailApp from "../mobileViewMenu/GetGmailApp";
 import SuccessMessage from "./SuccessMessage";
+import SendFeedBack from "./SendFeedBack";
 
 const MobileViewSettings = () => {
 	const { username } = useUser();
-	const { helpAndFeedback, settingSuccessMessage, setSettingSuccessMessage, setHelpAndFeedback } = useNavBarState();
+	const { helpAndFeedback, settingSuccessMessage, sendFeedback, setSettingSuccessMessage, setHelpAndFeedback } = useNavBarState();
 	const navigate = useNavigate();
 	const [toggleSignature, setToggleSignature] = useState(false);
 	const [toggleVacation, setToggleVacation] = useState(false);
@@ -71,6 +72,7 @@ const MobileViewSettings = () => {
 
 			{helpAndFeedback && <HelpAndFeedback />}
 			{settingSuccessMessage && <SuccessMessage />}
+			{sendFeedback && <SendFeedBack />}
 		</>
 	);
 };
