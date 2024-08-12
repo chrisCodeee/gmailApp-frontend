@@ -10,7 +10,7 @@ const SendFeedBack = () => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (
-		<SendFeedbackWrapper className="animate__animated animate__fadeIn" style={{ backgroundColor: "#191919", width: "100vw", minHeight: "100vh" }}>
+		<SendFeedbackWrapper className="animate__animated animate__fadeIn" style={{ backgroundColor: "#191919", width: "100vw", height: "100vh" }}>
 			<div className="d-flex justify-content-between align-items-center" style={{ padding: "2rem 2rem 1rem 2rem", boxShadow: "1px 2px 3px rgba(0,0,0,0.4)" }}>
 				<h1 className="" style={{ fontSize: "1.8rem" }}>
 					Send feedback to Google
@@ -54,7 +54,19 @@ const SendFeedBack = () => {
 				</div>
 
 				<div className="footer">
-					Some <Link to="">account and system information</Link> may be sent to Google. We will use it to fix problems and improve our services, subject to our <Link to="">Privacy Policy</Link> and <Link to="">Terms of Service</Link>. We may email you for more information or updates. Go to <Link to="">Legal Help</Link> to ask for content changes for legal reasons.
+					Some <Link to="">account and system information</Link> may be sent to Google. We will use it to fix problems and improve our services, subject to our{" "}
+					<Link to="https://policies.google.com/u/1/privacy" target="_blank">
+						Privacy Policy
+					</Link>{" "}
+					and{" "}
+					<Link to="https://policies.google.com/u/1/terms" target="_blank">
+						Terms of Service
+					</Link>
+					. We may email you for more information or updates. Go to{" "}
+					<Link to="https://support.google.com/legal/answer/3110420" target="_blank">
+						Legal Help
+					</Link>{" "}
+					to ask for content changes for legal reasons.
 				</div>
 			</div>
 
