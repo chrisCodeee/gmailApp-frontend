@@ -91,8 +91,7 @@ const HelpAndFeedbackWrapper = styled.div`
 const SendFeedbackWrapper = styled.div`
 	position: absolute;
 	top: 0;
-	left: 0;
-	right: 0;
+	bottom: 0;
 	color: rgb(227, 227, 227);
 
 	& .input {
