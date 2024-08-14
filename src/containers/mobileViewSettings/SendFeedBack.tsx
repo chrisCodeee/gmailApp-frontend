@@ -19,6 +19,7 @@ const SendFeedBack = () => {
 					<IoClose size={25} color="rgb(227, 227, 227)" />
 				</div>
 			</div>
+
 			<div className="" style={{ padding: "2.5rem 2rem", fontSize: "1.5rem", boxShadow: "1px 2px 3px rgba(0,0,0,0.4)" }}>
 				<div className="mb-3">Describe your feedback</div>
 
@@ -70,7 +71,7 @@ const SendFeedBack = () => {
 				</div>
 			</div>
 
-			<div className="" style={{ textAlign: "end", padding: "2.5rem 2rem 0 0" }}>
+			<div className="" style={{ textAlign: "end", padding: "2.5rem 2rem 1rem 0" }}>
 				<button style={{ backgroundColor: "rgba(227, 227, 227, 0.12)", padding: ".6rem 2.5rem", borderRadius: "3px", fontSize: "1.5rem" }}>Send</button>
 			</div>
 		</SendFeedbackWrapper>
