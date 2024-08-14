@@ -35,6 +35,9 @@ interface NavBarProps {
 
 	sendFeedback: boolean;
 	setSendFeedback: (state: boolean) => void;
+
+	accountAndSystemInfoState: boolean;
+	setAccountAndSystemInfoState: (state: boolean) => void;
 }
 
 const useNavBarState = create<NavBarProps>((set) => ({
@@ -72,6 +75,9 @@ const useNavBarState = create<NavBarProps>((set) => ({
 
 	sendFeedback: false,
 	setSendFeedback: (state) => set(() => ({ sendFeedback: state })),
+
+	accountAndSystemInfoState: false,
+	setAccountAndSystemInfoState: (state) => set(() => ({ accountAndSystemInfoState: state })),
 }));
 
 export default useNavBarState;

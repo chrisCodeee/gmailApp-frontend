@@ -72,6 +72,7 @@ function App() {
 						<div className="d-none d-xl-block">
 							<Outlet />
 						</div>
+
 						{/* Other Components when clicked or hovered */}
 						{createLabelState && <Container.CreateLabelModal />}
 						{googleAppState && <Container.GoogleApps />}

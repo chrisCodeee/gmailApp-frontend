@@ -6,7 +6,7 @@ import { MdCheckBox, MdHelpOutline, MdOutlineAttachFile, MdOutlineCheckBoxOutlin
 import { useState } from "react";
 
 const SendFeedBack = () => {
-	const { setSendFeedback } = useNavBarState();
+	const { setSendFeedback, setAccountAndSystemInfoState } = useNavBarState();
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (
@@ -54,7 +54,7 @@ const SendFeedBack = () => {
 				</div>
 
 				<div className="footer">
-					Some <Link to="">account and system information</Link> may be sent to Google. We will use it to fix problems and improve our services, subject to our{" "}
+					Some <span onClick={() => setAccountAndSystemInfoState(true)}>account and system information</span> may be sent to Google. We will use it to fix problems and improve our services, subject to our{" "}
 					<Link to="https://policies.google.com/u/1/privacy" target="_blank">
 						Privacy Policy
 					</Link>{" "}

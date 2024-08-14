@@ -2,21 +2,26 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../hooks";
 import { SettingHeader, SettingWrapper } from "./MobileViewSettingStyle";
 import { MobileMenuBg } from "../../assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavBarState } from "../../state-management";
 import HelpAndFeedback from "./HelpAndFeedback";
 import GetGmailApp from "../mobileViewMenu/GetGmailApp";
 import SuccessMessage from "./SuccessMessage";
 import SendFeedBack from "./SendFeedBack";
+import AccountAndSystemInfo from "./AccountAndSystemInfo";
 
 const MobileViewSettings = () => {
 	const { username } = useUser();
-	const { helpAndFeedback, settingSuccessMessage, sendFeedback, setSettingSuccessMessage, setHelpAndFeedback } = useNavBarState();
+	const { helpAndFeedback, settingSuccessMessage, sendFeedback, accountAndSystemInfoState, setAccountAndSystemInfoState, setSettingSuccessMessage, setHelpAndFeedback } = useNavBarState();
 	const navigate = useNavigate();
 	const [toggleSignature, setToggleSignature] = useState(false);
 	const [toggleVacation, setToggleVacation] = useState(false);
 
 	const [signature, setSignature] = useState("null");
+
+	useEffect(() => {
+		setAccountAndSystemInfoState(false);
+	}, []);
 
 	const applySetting = () => {
 		setSettingSuccessMessage(true);
@@ -73,6 +78,7 @@ const MobileViewSettings = () => {
 			{helpAndFeedback && <HelpAndFeedback />}
 			{settingSuccessMessage && <SuccessMessage />}
 			{sendFeedback && <SendFeedBack />}
+			{accountAndSystemInfoState && <AccountAndSystemInfo />}
 		</>
 	);
 };

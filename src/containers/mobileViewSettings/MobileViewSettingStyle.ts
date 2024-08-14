@@ -138,8 +138,8 @@ const SendFeedbackWrapper = styled.div`
 		line-height: 1.25;
 		
 		
-
-		& a{
+		& a,
+		& span{
 		  color: rgb(124, 172, 248);
 		  text-decoration: underline;
 		}
