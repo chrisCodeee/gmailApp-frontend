@@ -3,13 +3,12 @@ import { useCompose } from "../../hooks";
 import { useNavBarState } from "../../state-management";
 import { validateSendEmail } from "../scheduleSend/component/useScheduleSend";
 import { MobileViewComposeWrapper } from "./MobileViewComposeStyle";
-import { useNavigate } from "react-router-dom";
 
 const MobileCompose = () => {
 	const { setMobileComposeState, setMobileSuccessMesssage } = useNavBarState();
 	const { useComposeMessage } = useCompose();
 	// const { setMessage } = useInboxState();
-	const navigate = useNavigate();
+
 	const [isEmail, setIsEmail] = useState(false);
 
 	// const { username, firstName, lastName } = useUser();
@@ -59,7 +58,8 @@ const MobileCompose = () => {
 			return alert(`'${useComposeMessage.recipientEmailAddress}' isn't a valid email address. Try sending again after fixing it.`);
 		}
 
-		navigate("/");
+		setMobileComposeState(false);
+		setMobileSuccessMesssage(true);
 
 		setTimeout(() => {
 			setMobileSuccessMesssage(false);
