@@ -40,7 +40,7 @@ const MobileViewMenu = () => {
 				<div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "rgb(241, 241, 241)", padding: ".7rem 1.2rem" }}>
 					<div className="">&nbsp;</div>
 					<div className="d-flex align-items-center" style={{ fontWeight: "500", border: "1px solid rgba(0,0,0,0.3)", borderRadius: "3px", padding: "0.2rem 1rem", fontSize: "1.3rem", backgroundColor: "#fff" }}>
-						<div>{username}</div>
+						<div>{username ? username : "user@gmail.com"}</div>
 						<div className="d-flex">
 							<MdArrowDropDown size={25} />
 						</div>
