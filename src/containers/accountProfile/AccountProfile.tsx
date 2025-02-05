@@ -27,7 +27,7 @@ const AccountProfile = () => {
 				<AccountProfileContainer>
 					<UserNameContainer>
 						<div className="me-5">&nbsp;</div>
-						<div>{username}</div>
+						<div>{username ? username : "user@gmail.com"}</div>
 						<div onClick={setAccountProfileStateOff}>
 							<Icon>
 								<IoClose size={24} />
@@ -44,7 +44,7 @@ const AccountProfile = () => {
 						</button>
 
 						<div className="mt-1" style={{ fontSize: "2.2rem" }}>
-							Hi, {firstName}
+							Hi, {firstName ? firstName : "User"}
 						</div>
 					</UserContainer>
 
