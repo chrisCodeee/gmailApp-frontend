@@ -7,7 +7,6 @@ import ErrorMessage from "./signUpPages/ErrorMessage";
 import { Form } from "./components";
 import { LoginUsernameContainer } from "./AuthStyles";
 import { validateSigninEmail } from "./signUpPages/useValidateUser";
-import axios from "axios";
 
 const Login = () => {
 	const { signinDetails, error, setError } = useAuthState();
@@ -22,21 +21,28 @@ const Login = () => {
 			return setError("username", error.details[0].message);
 		}
 
-		console.log(signinDetails);
+		// console.log(signinDetails);
 
-		axios
-			.post("https://gmailapp-backend-production.up.railway.app/users/checkloginemail", signinDetails)
-			.then((res) => {
-				if (res.status === 200) {
-					// console.log(res.data);
-					// localStorage.setItem("user", JSON.stringify(res.data));
-					navigate("/login/confirmpassword");
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-				setError("username", "Couldn't find your Google Account");
-			});
+		// Without Backend
+		if (signinDetails.username) {
+			localStorage.setItem("username", JSON.stringify(signinDetails.username));
+			navigate("/login/confirmpassword");
+		}
+
+		// axios
+		// 	// .post("https://gmailapp-backend-production.up.railway.app/users/checkloginemail", signinDetails)
+		// 	.post("http://localhost:8080/users/checkloginemail", signinDetails)
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			// console.log(res.data);
+		// 			// localStorage.setItem("user", JSON.stringify(res.data));
+		// 			navigate("/login/confirmpassword");
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 		setError("username", "Couldn't find your Google Account");
+		// 	});
 	};
 
 	return (

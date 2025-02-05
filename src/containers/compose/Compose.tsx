@@ -30,7 +30,7 @@ const Compose = () => {
 	const getMessages = () => {
 		const controller = new AbortController();
 		axios
-			.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
+			.get(`http://localhost:8080/getmessage/${username}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
@@ -63,7 +63,7 @@ const Compose = () => {
 		}, 5000);
 
 		axios
-			.post(`https://gmailapp-backend-production.up.railway.app/sendmessage/`, message)
+			.post(`http://localhost:8080/sendmessage/`, message)
 			.then((res) => {
 				if (res.status === 200) {
 					setMessageSentState(true);

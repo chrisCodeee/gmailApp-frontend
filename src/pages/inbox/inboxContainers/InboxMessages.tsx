@@ -14,24 +14,24 @@ interface InboxMessageProps {
 }
 
 const InboxMessages = ({ items }: InboxMessageProps) => {
-	const months = ["Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	// const months = ["Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-	const date = new Date(items.date);
-	const month = date.getMonth();
-	const day = date.getDate();
+	// const date = new Date(items.date);
+	// const month = date.getMonth();
+	// const day = date.getDate();
 
-	const pastDate = `${months[month]} ${day}`;
+	// const pastDate = `${months[month]} ${day}`;
 
-	let hours = new Date(items.date).getHours();
-	let minutes = new Date(items.date).getMinutes().toString().padStart(2, "0");
-	const ampm = hours >= 12 ? "PM" : "AM";
+	// let hours = new Date(items.date).getHours();
+	// let minutes = new Date(items.date).getMinutes().toString().padStart(2, "0");
+	// const ampm = hours >= 12 ? "PM" : "AM";
 
-	hours = hours % 12;
-	hours = hours ? hours : 12; // the hour '0' should be '12'
-	const strHours = hours.toString();
+	// hours = hours % 12;
+	// hours = hours ? hours : 12; // the hour '0' should be '12'
+	// const strHours = hours.toString();
 
-	let time;
-	new Date().getDate() - day >= 1 ? (time = pastDate) : (time = `${strHours}:${minutes} ${ampm}`);
+	// let time;
+	// new Date().getDate() - day >= 1 ? (time = pastDate) : (time = `${strHours}:${minutes} ${ampm}`);
 
 	return (
 		<InboxMessageContainer className="px-3 px-xl-2" style={{ backgroundColor: items.bgColor }}>
@@ -56,14 +56,14 @@ const InboxMessages = ({ items }: InboxMessageProps) => {
 
 				<div className="d-flex flex-column flex-xl-row flex-grow-1">
 					<div className="d-none d-xl-flex col-xl-2 align-items-center" style={{ fontWeight: "500" }}>
-						{items.sender}
+						{items.subject}
 					</div>
 
 					<div className="d-flex d-xl-none justify-content-between align-items-center">
 						<div className="d-flex col-xl-2 align-items-center" style={{ fontWeight: "600", fontSize: "1.7rem" }}>
-							{items.sender}
+							{items.subject}
 						</div>
-						<InboxMessageTime>{time}</InboxMessageTime>
+						<InboxMessageTime>{items.time}</InboxMessageTime>
 					</div>
 
 					<InboxMessageBody items={items} />

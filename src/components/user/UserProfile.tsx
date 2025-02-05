@@ -12,8 +12,8 @@ const UserProfile = ({ height = "28px", borderRadius = "100%", fontSize = "1.5re
 	return (
 		<>
 			<div className="d-flex align-items-center justify-content-center" style={{ backgroundColor: bgColor, color: "#fff", borderRadius: borderRadius, width: height, height: height, fontSize: fontSize, padding: padding, fontWeight: "500" }}>
-				{firstName[0].toUpperCase()}
-				{lastName[0].toUpperCase()}
+				{firstName ? firstName[0].toUpperCase() : "N"}
+				{lastName ? lastName[0].toUpperCase() : "/A"}
 			</div>
 		</>
 	);

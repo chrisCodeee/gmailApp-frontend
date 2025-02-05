@@ -10,11 +10,11 @@ import { IoSearchSharp } from "react-icons/io5";
 
 const Inbox = () => {
 	const { inboxState, messages, setInboxStateOn, setInboxStateOff } = useInboxState();
-	const [num, setNum] = useState<string>();
+	const [num, setNum] = useState<number>(0);
 
 	const newInboxMessageDetails = messages.map((items) => (items._id === num ? { ...items, inboxState: inboxState } : items));
 
-	const hover = (index: string) => {
+	const hover = (index: number) => {
 		setNum(index);
 	};
 
@@ -67,7 +67,7 @@ const Inbox = () => {
 				{newInboxMessageDetails.map((items: any) => (
 					<div
 						key={items._id}
-						onMouseOver={() => {
+						onMouseEnter={() => {
 							hover(items._id);
 							setInboxStateOn();
 						}}

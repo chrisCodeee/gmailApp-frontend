@@ -8,10 +8,10 @@ import { ScheduleCheckEmailPopUp, ScheduleCheckPopUp } from "../containers/sched
 import MoreLabelOption from "../containers/moreOptions/subMoreOptions/MoreLabelOption";
 import MoreOptionTimeAndDate from "../containers/moreOptionSetUpTimeAndDate/MoreOptionTimeAndDate";
 import { ScheduleAppointment } from "../containers/moreOptionSetUpTimeAndDate/components";
-import axios, { CanceledError } from "axios";
-import { useEffect } from "react";
 import SuccessMessage from "../containers/mobileViewCompose/SuccessMessage";
 import GetGmailApp from "../containers/mobileViewMenu/GetGmailApp";
+import { useEffect } from "react";
+import { inboxMessageDetails } from "../pages/inbox/useInboxParams";
 
 function App() {
 	const { showMoreState, supportState, googleAppState, accountProfileState, mobileComposeState, mobileSuccessMessageState } = useNavBarState();
@@ -22,31 +22,31 @@ function App() {
 
 	const { selectMessageTypeState, markAllMessageReadState, selectInputToolState, messageSentState, setMessage } = useInboxState();
 
-	const { user, username } = useUser();
+	const { user } = useUser();
+	// const { user, username } = useUser();
 
 	useEffect(() => {
-		const controller = new AbortController();
-
-		axios
-			.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
-				signal: controller.signal,
-			})
-			.then((res) => {
-				if (res.status === 200) {
-					setMessage(res.data);
-				}
-			})
-			.catch((err) => {
-				if (err instanceof CanceledError) return;
-				console.log(err);
-			});
-
-		return () => controller.abort();
+		setMessage(inboxMessageDetails);
+		// const controller = new AbortController();
+		// axios
+		// 	.get(`http://localhost:8080/getmessage/${username}`, {
+		// 		signal: controller.signal,
+		// 	})
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			setMessage(res.data);
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		if (err instanceof CanceledError) return;
+		// 		console.log(err);
+		// 	});
+		// return () => controller.abort();
 	}, []);
 
 	return (
 		<>
-			{user ? (
+			{user.userName ? (
 				<>
 					<AppWrapper>
 						<div className="d-none d-xl-block">

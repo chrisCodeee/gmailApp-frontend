@@ -3,7 +3,6 @@ import { useAuthState } from "../../state-management";
 import { BtnNext, Form } from "../components";
 import SignUp from "../SignUp";
 import { FormEvent } from "react";
-import axios from "axios";
 
 const page9 = () => {
 	const { user, clearUsers } = useAuthState();
@@ -13,19 +12,23 @@ const page9 = () => {
 		e.preventDefault();
 		clearUsers();
 
-		axios
-			.post(`https://gmailapp-backend-production.up.railway.app/users/register/`, user)
-			.then((res) => {
-				if (res.status === 200) {
-					console.log(res.data);
-					navigate("/");
-					localStorage.setItem("user", JSON.stringify(res.data));
-					window.location.reload();
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		navigate("/");
+		localStorage.setItem("user", JSON.stringify(user));
+		window.location.reload();
+
+		// axios
+		// 	.post(`http://localhost:8080/users/register/`, user)
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			console.log(res.data);
+		// 			navigate("/");
+		// 			localStorage.setItem("user", JSON.stringify(res.data));
+		// 			window.location.reload();
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	};
 
 	return (

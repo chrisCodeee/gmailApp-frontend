@@ -5,7 +5,7 @@ import SignUp from "../SignUp";
 import { FormEvent, useEffect } from "react";
 import { validateUsername } from "./useValidateUser";
 import ErrorMessage from "./ErrorMessage";
-import axios from "axios";
+
 const page3 = () => {
 	const { user, error, setError } = useAuthState();
 	const navigate = useNavigate();
@@ -20,26 +20,29 @@ const page3 = () => {
 		const { error } = validateUsername(user.username.trim());
 
 		if (error) {
+			user.username = user.username.split("@")[0];
 			return setError("username", error.details[0].message);
 		}
 
 		if (user.username.includes("gmail")) {
 			return setError("username", "This username isn't allowed. Try again.");
+		} else {
+			navigate("/register/step_4");
 		}
 
 		user.username = user.username + "@gmail.com";
 
-		axios
-			.post("https://gmailapp-backend-production.up.railway.app/users/checkEmail", user)
-			.then((res) => {
-				if (res.status === 200) {
-					navigate("/register/step_4");
-				}
-			})
-			.catch(() => {
-				setError("username", "Username already registered");
-				user.username = user.username.split("@")[0];
-			});
+		// axios
+		// 	.post("http://localhost:8080/users/checkEmail", user)
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			navigate("/register/step_4");
+		// 		}
+		// 	})
+		// 	.catch(() => {
+		// 		setError("username", "Username already registered");
+		// 		user.username = user.username.split("@")[0];
+		// 	});
 	};
 
 	return (

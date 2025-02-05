@@ -5,7 +5,6 @@ import { SignUpFormInput, BtnNext } from "./components";
 import SignUp from "./SignUp";
 import ErrorMessage from "./signUpPages/ErrorMessage";
 import { Form } from "./components";
-import axios from "axios";
 
 const ConfirmLoginPassword = () => {
 	const { signinDetails, error, setError } = useAuthState();
@@ -19,20 +18,26 @@ const ConfirmLoginPassword = () => {
 			return setError("password", "Enter a password");
 		}
 
-		axios
-			.post("https://gmailapp-backend-production.up.railway.app/users/checkloginpassword", signinDetails)
-			.then((res) => {
-				if (res.status === 200) {
-					// console.log(res.data);
-					localStorage.setItem("user", JSON.stringify(res.data));
-					navigate("/");
-					window.location.reload();
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-				setError("password", "Wrong password. Try again or click Forgot password to reset it.");
-			});
+		// Without backend
+		if (signinDetails.password) {
+			// localStorage.setItem("password", JSON.stringify(signinDetails.password));
+			navigate("/");
+		}
+		// axios
+		// 	// .post("https://gmailapp-backend-production.up.railway.app/users/checkloginpassword", signinDetails)
+		// 	.post("http://localhost:8080/users/checkloginpassword", signinDetails)
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			// console.log(res.data);
+		// 			localStorage.setItem("user", JSON.stringify(res.data));
+		// 			navigate("/");
+		// 			window.location.reload();
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 		setError("password", "Wrong password. Try again or click Forgot password to reset it.");
+		// 	});
 	};
 
 	return (

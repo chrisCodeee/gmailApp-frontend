@@ -1,7 +1,7 @@
 import { create } from "zustand";
 export type InboxType = {
 	email: string;
-	_id: string;
+	_id: number;
 	subject: string;
 	body: string;
 	date: string;
@@ -39,9 +39,9 @@ interface InboxProps {
 	errorMessage: string;
 	setErrorMessage: (text: string) => void;
 
-	isStar: string;
+	isStar: number;
 	isStarState: boolean;
-	setIsStar: (id: string) => void;
+	setIsStar: (id: number) => void;
 
 	mobileCategory: string;
 	count?: string | number;
@@ -80,7 +80,7 @@ const useInboxState = create<InboxProps>((set) => ({
 	errorMessage: "",
 	setErrorMessage: (text) => set(() => ({ errorMessage: text })),
 
-	isStar: "",
+	isStar: NaN,
 	isStarState: false,
 	setIsStar: (id) => set((store) => ({ isStar: id, isStarState: !store.isStarState })),
 
