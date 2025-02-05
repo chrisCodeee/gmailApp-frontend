@@ -1,47 +1,48 @@
-import axios, { CanceledError } from "axios";
 import { FormEvent, useState } from "react";
-import { useCompose, useUser } from "../../hooks";
-import { useInboxState, useNavBarState } from "../../state-management";
+import { useCompose } from "../../hooks";
+import { useNavBarState } from "../../state-management";
 import { validateSendEmail } from "../scheduleSend/component/useScheduleSend";
 import { MobileViewComposeWrapper } from "./MobileViewComposeStyle";
+import { useNavigate } from "react-router-dom";
 
 const MobileCompose = () => {
 	const { setMobileComposeState, setMobileSuccessMesssage } = useNavBarState();
 	const { useComposeMessage } = useCompose();
-	const { setMessage } = useInboxState();
+	// const { setMessage } = useInboxState();
+	const navigate = useNavigate();
 	const [isEmail, setIsEmail] = useState(false);
 
-	const { username, firstName, lastName } = useUser();
+	// const { username, firstName, lastName } = useUser();
 
-	const message = {
-		email: useComposeMessage.recipientEmailAddress,
-		subject: useComposeMessage.emailSubject,
-		body: useComposeMessage.contentEditable,
-		sender: `${firstName} ${lastName}`,
-	};
+	// const message = {
+	// 	email: useComposeMessage.recipientEmailAddress,
+	// 	subject: useComposeMessage.emailSubject,
+	// 	body: useComposeMessage.contentEditable,
+	// 	sender: `${firstName} ${lastName}`,
+	// };
 
 	const handleInput = (event: FormEvent<HTMLDivElement>) => {
 		useComposeMessage.setContentEditable(event.currentTarget.textContent || "");
 	};
 
-	const getMessages = () => {
-		const controller = new AbortController();
-		axios
-			.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
-				signal: controller.signal,
-			})
-			.then((res) => {
-				if (res.status === 200) {
-					console.log(res.data);
-					setMessage(res.data);
-				}
-			})
-			.catch((err) => {
-				if (err instanceof CanceledError) return;
-				console.log(err);
-			});
-		return () => controller.abort();
-	};
+	// const getMessages = () => {
+	// 	const controller = new AbortController();
+	// 	axios
+	// 		.get(`https://gmailapp-backend-production.up.railway.app/getmessage/${username}`, {
+	// 			signal: controller.signal,
+	// 		})
+	// 		.then((res) => {
+	// 			if (res.status === 200) {
+	// 				console.log(res.data);
+	// 				setMessage(res.data);
+	// 			}
+	// 		})
+	// 		.catch((err) => {
+	// 			if (err instanceof CanceledError) return;
+	// 			console.log(err);
+	// 		});
+	// 	return () => controller.abort();
+	// };
 
 	const sendMessage = () => {
 		const { error } = validateSendEmail(useComposeMessage.recipientEmailAddress);
@@ -58,25 +59,27 @@ const MobileCompose = () => {
 			return alert(`'${useComposeMessage.recipientEmailAddress}' isn't a valid email address. Try sending again after fixing it.`);
 		}
 
+		navigate("/");
+
 		setTimeout(() => {
 			setMobileSuccessMesssage(false);
 		}, 5000);
 
-		axios
-			.post(`https://gmailapp-backend-production.up.railway.app/sendmessage/`, message)
-			.then((res) => {
-				if (res.status === 200) {
-					setMobileComposeState(false);
-					setMobileSuccessMesssage(true);
+		// axios
+		// 	.post(`https://gmailapp-backend-production.up.railway.app/sendmessage/`, message)
+		// 	.then((res) => {
+		// 		if (res.status === 200) {
+		// 			setMobileComposeState(false);
+		// 			setMobileSuccessMesssage(true);
 
-					setTimeout(() => {
-						getMessages();
-					}, 1000);
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		// 			setTimeout(() => {
+		// 				getMessages();
+		// 			}, 1000);
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	};
 
 	return (
